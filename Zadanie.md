@@ -1,7 +1,7 @@
 
 ## **Zadanie 10.**
 
-### Sprawdź, które elementy tablicy dwuwymiariowej występują w każdym wierszu tej tablicy.
+#### Sprawdź, które elementy tablicy dwuwymiariowej występują w każdym wierszu tej tablicy.
 
 ### **Przykład.**
 **Wejście**:  
