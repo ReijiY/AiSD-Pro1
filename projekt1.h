@@ -11,6 +11,8 @@
 #include <vector>
 #include <chrono>
 
+#include <deque>
+
 #define PRO_FILE_VALUE_DELIMITER ','
 #define PRO_FILE_ARRAY_DELIMITER '\n'
 
@@ -26,13 +28,16 @@ namespace pro
 	// generuje losowy ciag n wartosci z przedzialu od min do max
 	std::vector<int> generuj_losowy_ciag(int min, int max, int n);
 
+	// generuje losowy ciag 2d wartosci z przedzialu od min do max o wymiarach w x h
+	std::vector<std::vector<int>> generuj_losowy_ciag_2d(int min, int max, int w, int h);
+
 	// generuje ciag z zakresu start do end z krokiem step (2, 7, 2) -> [2, 4, 6]
 	std::vector<int> generuj_ciag_z_zakresu(int start, int end, int step = 1);
 
 
 	std::vector<int>::iterator linear_search_iterator(std::vector<int>& arr, int val);
 
-	std::vector<int>::iterator binary_search_iterator(std::vector<int>& arr, int val);
+	std::deque<int>::iterator binary_search_iterator(std::deque<int>& arr, int val);
 
 	// wypisuje tablice na ekranie z opcjonalnym dope³nianiem bia³ymi znakami do podanej iloœci znaków (max 50)
 	void wypisz_ciag(const std::vector<int> &arr, unsigned spacing = 0);

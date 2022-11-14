@@ -33,7 +33,26 @@ std::vector<int> pro::generuj_losowy_ciag(int min, int max, int n)
 		*el = losowa_liczba(min, max);
 	}
 
-	// zwracanie utworzonej tablicy
+	//zwrócenie utworzonej tablicy
+	return res;
+}
+
+std::vector<std::vector<int>> pro::generuj_losowy_ciag_2d(int min, int max, int w, int h)
+{
+	// utworzenie kontenera na losowe ci¹gi
+	std::vector<std::vector<int>> res;
+	
+	// zmiana rozmiaru kontenera na h-elementowy
+	res.resize(h);
+
+	// dla ka¿dego elementu kontenera
+	for (auto el = res.begin(); el != res.end(); el++)
+	{
+		// wpisanie losowo wygenerowanego ci¹gu o rozmiarze w i wartoœciach w przedziale min do max
+		*el = generuj_losowy_ciag(min, max, w);
+	}
+
+	//zwrócenie utworzonej tablicy
 	return res;
 }
 
@@ -75,9 +94,9 @@ std::vector<int>::iterator pro::linear_search_iterator(std::vector<int>& arr, in
 	return std::find(arr.begin(), arr.end(), val);
 }
 
-std::vector<int>::iterator pro::binary_search_iterator(std::vector<int>& arr, int val)
+std::deque<int>::iterator pro::binary_search_iterator(std::deque<int>& arr, int val)
 {
-	std::vector<int>::iterator it = std::lower_bound(arr.begin(), arr.end(), val);
+	std::deque<int>::iterator it = std::lower_bound(arr.begin(), arr.end(), val);
 	if (it == arr.end() || *it != val) return arr.end();
 	return it;
 }
@@ -85,33 +104,42 @@ std::vector<int>::iterator pro::binary_search_iterator(std::vector<int>& arr, in
 // wypisuje tablice na ekranie
 void pro::wypisz_ciag(const std::vector<int>& arr, unsigned spacing)
 {
+	std::cout << "[";
+
 	if (spacing == 0)
 	{
 		// dla ka¿dego elementu tablicy
-		for (const auto &el : arr) 
+		for (auto el = arr.begin(); el != arr.end(); el++)
+		{
 			// wypisanie wartoœci elementu
-			std::cout << el << ",";
+			std::cout << *el;
+			if (el != arr.end() - 1) std::cout << ",";
+		}
 	}
 	else
 	{
 		// zabezpieczenie przed przypadkowym przepe³nieniem w dó³ (unsigned -1 = 4294967295)
 		if (spacing > 50) spacing = 50;
 
+
 		// utworzenie tablicy znaków dla formatu dope³nienia wartoœci
 		char* mod = new char[12];
 		// wpisanie formatu do tablicy znaków (np. "%3d, ")
-		sprintf_s(mod, 12, "%%%dd, ", spacing);
+		sprintf_s(mod, 12, "%%%dd", spacing);
 
 		// dla ka¿dego elementu tablicy
-		for (const auto &el : arr)
+		for (auto el = arr.begin(); el != arr.end(); el++)
+		{
 			// wypisanie wartoœci elementu przy u¿yciu utworzonego wczeœniej formatu
-			printf(mod, el);
+			printf(mod, *el);
+			if (el != arr.end() - 1) std::cout << ",";
+		}
 
 		// zwolnienie pamiêci tablicy formatu
 		delete[] mod;
 	}
 
-	std::cout << "\n";
+	std::cout << "]\n";
 }
 
 void pro::wypisz_ciag(const std::vector<std::vector<int>>& data, unsigned spacing)
