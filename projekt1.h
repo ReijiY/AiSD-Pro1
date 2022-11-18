@@ -6,6 +6,8 @@
 #include <sstream>
 #include <string>
 
+#include <algorithm>
+
 #include <time.h>
 
 #include <vector>
@@ -34,17 +36,18 @@ namespace pro
 	// generuje ciag z zakresu start do end z krokiem step (2, 7, 2) -> [2, 4, 6]
 	std::vector<int> generuj_ciag_z_zakresu(int start, int end, int step = 1);
 
-
+	// przeprowadza wyszukiwanie liniowe w wartoœciach tablicy zwracaj¹c iterator na znaleziony element lub iterator koñca tablicy
 	std::vector<int>::iterator linear_search_iterator(std::vector<int>& arr, int val);
 
-	std::deque<int>::iterator binary_search_iterator(std::deque<int>& arr, int val);
+	// wyszukuje wspólne elementy tablic arr1 i arr2 poprzez intersekcje oraz przepisuje je do tablicy res
+	std::vector<int>::iterator set_intersection(const std::vector<int>& arr1, const std::vector<int>& arr2, std::vector<int>::iterator res);
 
 	// wypisuje tablice na ekranie z opcjonalnym dope³nianiem bia³ymi znakami do podanej iloœci znaków (max 50)
 	void wypisz_ciag(const std::vector<int> &arr, unsigned spacing = 0);
 	void wypisz_ciag(const std::vector<std::vector<int>>& data, unsigned spacing = 0);
 
 	// zapisuje tablice do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci
-	void zapisz_ciag_do_pliku(const char* nazwa_pliku, const std::vector<int> &arr, char delimiter = PRO_FILE_VALUE_DELIMITER);
+	void zapisz_ciag_do_pliku(const char* nazwa_pliku, const std::vector<int>& arr, char delimiter = PRO_FILE_VALUE_DELIMITER);
 
 	// zapisuje tablice dwuwymiarow¹ do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci i tablice
 	void zapisz_ciag_2d_do_pliku(const char* nazwa_pliku, const std::vector<std::vector<int>>& data, char delimiter_val = PRO_FILE_VALUE_DELIMITER, char delimiter_array = PRO_FILE_ARRAY_DELIMITER);
@@ -55,11 +58,8 @@ namespace pro
 	// odczytuje tablice dwuwymiarow¹ z pliku wejsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci i tablice
 	std::vector<std::vector<int>> odczytaj_ciag_2d_z_pliku(const char* nazwa_pliku, char delimiter_val = PRO_FILE_VALUE_DELIMITER, char delimiter_array = PRO_FILE_ARRAY_DELIMITER);
 
-
+	// zwraca parê iteratorów, na której wykonywane maj¹ byæ operacje dla tablicy 2-wymiarowej dla n-tego w¹tku przy zdefiniowanej ³¹cznej liczbie wykoszystanych w¹tków
+	std::pair<std::vector<std::vector<int>>::const_iterator, std::vector<std::vector<int>>::const_iterator> thread_bounds(const std::vector<std::vector<int>>& data, int thread_count, int thread_id);
 }
-
-
-
-
 
 #endif

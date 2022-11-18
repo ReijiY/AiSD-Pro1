@@ -20,18 +20,16 @@ std::vector<int> pro::generuj_losowy_ciag(int min, int max, int n)
 	// weryfikacja kolejnoœci argumentów w podanym zakresie
 	if (min > max) std::swap(min, max);
 
-	// utworzenie kontenera na losowy ciag
-	std::vector<int> res;
+	// utworzenie n-elementowego kontenera na losowy ciag
+	std::vector<int> res(n);
 
-	// zmiana rozmiaru kontenera na n-elementowy
-	res.resize(n);
+	// generator losuj¹cy wartoœci z przedzia³u [min, max]
+	auto gen = [&min, &max]() {
+		return losowa_liczba(min, max);
+	};
 
-	// dla ka¿dego elementu kontenera
-	for (auto el = res.begin(); el != res.end(); el++)
-	{
-		// wpisanie losowej liczby z przedzia³u od min do max (w³¹cznie)
-		*el = losowa_liczba(min, max);
-	}
+	// wype³nienie losowego ci¹gu wartoœciami losowanymi przez generator
+	std::generate(res.begin(), res.end(), gen);
 
 	//zwrócenie utworzonej tablicy
 	return res;
@@ -45,18 +43,26 @@ std::vector<std::vector<int>> pro::generuj_losowy_ciag_2d(int min, int max, int 
 	// zmiana rozmiaru kontenera na h-elementowy
 	res.resize(h);
 
+	// generator losuj¹cy wartoœci z przedzia³u [min, max]
+	auto gen = [&min, &max]() {
+		return losowa_liczba(min, max);
+	};
+
 	// dla ka¿dego elementu kontenera
-	for (auto el = res.begin(); el != res.end(); el++)
+	for (auto &el : res)
 	{
-		// wpisanie losowo wygenerowanego ci¹gu o rozmiarze w i wartoœciach w przedziale min do max
-		*el = generuj_losowy_ciag(min, max, w);
+		// wpisanie pustego ci¹gu o rozmiarze w
+		el = std::vector<int>(w);
+		
+		// wype³nienie losowego ci¹gu wartoœciami losowanymi przez generator
+		std::generate(el.begin(), el.end(), gen);
 	}
 
 	//zwrócenie utworzonej tablicy
 	return res;
 }
 
-// generuje ciag z zakresu start do end z krokiem step (2, 7, 2) -> [2, 4, 6]
+// generuje ciag z zakresu start do end z krokiem step, np. (2, 7, 2) -> [2, 4, 6]
 std::vector<int> pro::generuj_ciag_z_zakresu(int start, int end, int step)
 {
 	// weryfikacja kolejnoœci argumentów w podanym zakresie
@@ -89,16 +95,49 @@ std::vector<int> pro::generuj_ciag_z_zakresu(int start, int end, int step)
 	return res;
 }
 
+// przeprowadza wyszukiwanie liniowe w wartoœciach tablicy zwracaj¹c iterator na znaleziony element lub iterator koñca tablicy
 std::vector<int>::iterator pro::linear_search_iterator(std::vector<int>& arr, int val)
 {
+	// zwróæ wynik wyszukiwania liniowego zaimplementowanego w standardzie C++
 	return std::find(arr.begin(), arr.end(), val);
 }
 
-std::deque<int>::iterator pro::binary_search_iterator(std::deque<int>& arr, int val)
+// wyszukuje wspólne elementy tablic arr1 i arr2 poprzez intersekcje oraz przepisuje je do tablicy res
+std::vector<int>::iterator pro::set_intersection(const std::vector<int>& arr1, const std::vector<int>& arr2, std::vector<int>::iterator res)
 {
-	std::deque<int>::iterator it = std::lower_bound(arr.begin(), arr.end(), val);
-	if (it == arr.end() || *it != val) return arr.end();
-	return it;
+	// wyw³aszczenie iteratorów pocz¹tków i koñców tablic
+	std::vector<int>::const_iterator first1 = arr1.begin(), last1 = arr1.end(), first2 = arr2.begin(), last2 = arr2.end();
+
+	// dopóki iterator ¿adnej z tablicy nie dotar³ do jej koñca
+	while (first1 != last1 && first2 != last2) 
+	{
+		// je¿eli wartoœæ wskazywana przez pierwszy iterator jest mniejsza ni¿ wartoœæ wskazywana przez drugi iterator
+		if (*first1 < *first2) 
+		{
+			// zwiêksz pierwszy iterator
+			++first1;
+		}
+		// w przeciwnym wypadku, je¿eli wartoœæ wskazywana przez drugi iterator jest mniejsza od wartoœci wskazywanej przez pierwszy iterator
+		else if (*first2 < *first1)
+		{
+			// zwiêksz drugi operator
+			++first2;
+		}
+		// w przeciwnych wypadkach
+		else 
+		{
+			// w tym momencie wiemy, ¿e pierwszy i drugi iterator wskazuj¹ na tak¹ sam¹ wartoœæ
+			// wpisz wartoœæ wskazywan¹ przez pierwszy iterator do pamiêci wskazywanej przez iterator tablicy z wynikami
+			*res = *first1;
+			
+			// zwiêksz iterator tablicy z wynikami oraz pierwszej i drugiej tablicy
+			++res;
+			++first1;
+			++first2;
+		}
+	}
+	// zwróæ iterator tablicy z wynikami
+	return res;
 }
 
 // wypisuje tablice na ekranie
@@ -106,6 +145,7 @@ void pro::wypisz_ciag(const std::vector<int>& arr, unsigned spacing)
 {
 	std::cout << "[";
 
+	// je¿eli przekazana zosta³a domyœlna d³ugoœæ dope³nienia
 	if (spacing == 0)
 	{
 		// dla ka¿dego elementu tablicy
@@ -113,9 +153,11 @@ void pro::wypisz_ciag(const std::vector<int>& arr, unsigned spacing)
 		{
 			// wypisanie wartoœci elementu
 			std::cout << *el;
+			// dla wartoœci innych ni¿ ostatnia wypisz znak ','
 			if (el != arr.end() - 1) std::cout << ",";
 		}
 	}
+	// w przeciwnym wypadku
 	else
 	{
 		// zabezpieczenie przed przypadkowym przepe³nieniem w dó³ (unsigned -1 = 4294967295)
@@ -144,9 +186,11 @@ void pro::wypisz_ciag(const std::vector<int>& arr, unsigned spacing)
 
 void pro::wypisz_ciag(const std::vector<std::vector<int>>& data, unsigned spacing)
 {
+	// dla ka¿dego elementu tablicy 2-wymiarowej
 	for (auto const& arr : data)
 	{
-		wypisz_ciag(arr, spacing);
+		// wypisz wartoœci ci¹gu 1-wymiarowego wykorzystuj¹c istniaj¹c¹ funkcjê wypisz_ci¹g
+		pro::wypisz_ciag(arr, spacing);
 	}
 }
 
@@ -255,4 +299,40 @@ std::vector<std::vector<int>> pro::odczytaj_ciag_2d_z_pliku(const char* nazwa_pl
 
 	// zwrócenie dwuwymiarowej tablicy z wartoœciami
 	return data;
+}
+
+// zwraca parê iteratorów, na której wykonywane maj¹ byæ operacje dla tablicy 2-wymiarowej dla n-tego w¹tku przy zdefiniowanej ³¹cznej liczbie wykoszystanych w¹tków
+std::pair<std::vector<std::vector<int>>::const_iterator, std::vector<std::vector<int>>::const_iterator> pro::thread_bounds(const std::vector<std::vector<int>>& data, int thread_count, int thread_id)
+{
+	// odczytanie iloœci wierszy w tablicy dla operacji
+	int data_size = data.size();
+
+	// zmienna przechowuj¹ca indeks w¹tku, który jako pierwszy posiada mniej elementów od w¹tku o indeksie o jeden mniejszym
+	int break_point = data_size % thread_count;
+
+	// obliczenie iloœci wierszy, za których przetworzenie ma byæ odpowiedzialny w¹tek o podanym numerze
+	int weight_sum = thread_id < break_point ? data_size / thread_count + 1 : data_size / thread_count;
+
+	// oblicznenie indeksu pocz¹tku danych przydzielonych dla w¹tku o podanym numerze
+	int data_before = break_point - 1 < thread_id ? weight_sum * thread_id + break_point : weight_sum * thread_id;
+
+	// utworzenie iteratorów pocz¹tku i koñca danych
+	auto first = data.begin() + data_before;
+	auto last = first + weight_sum;
+
+	
+	if (std::distance(first, last) < 0) {
+		std::cout << "\n first > last !!! \n";
+	}
+
+	if (std::distance(data.begin(), first) < 0) {
+		std::cout << "\n first < data.begin() !!! \n";
+	}
+
+	if (std::distance(last, data.end()) < 0) {
+		std::cout << "\n last > data.end() !!! \n";
+	}
+
+	// zwrócenie pary iteratorów jako wyniku obliczeñ
+	return std::pair<std::vector<std::vector<int>>::const_iterator, std::vector<std::vector<int>>::const_iterator>(first, last);
 }
