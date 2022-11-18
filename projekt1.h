@@ -42,15 +42,12 @@ namespace pro
 	// wyszukuje wspólne elementy tablic arr1 i arr2 poprzez intersekcje oraz przepisuje je do tablicy res
 	std::vector<int>::iterator set_intersection(const std::vector<int>& arr1, const std::vector<int>& arr2, std::vector<int>::iterator res);
 
+	void opisz_ciag(const std::vector<int>& arr);
+	void opisz_ciag(const std::vector<std::vector<int>>& arr);
+
 	// wypisuje tablice na ekranie z opcjonalnym dope³nianiem bia³ymi znakami do podanej iloœci znaków (max 50)
 	void wypisz_ciag(const std::vector<int> &arr, unsigned spacing = 0);
 	void wypisz_ciag(const std::vector<std::vector<int>>& data, unsigned spacing = 0);
-
-	// zapisuje tablice do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci
-	void zapisz_ciag_do_pliku(const char* nazwa_pliku, const std::vector<int>& arr, char delimiter = PRO_FILE_VALUE_DELIMITER);
-
-	// zapisuje tablice dwuwymiarow¹ do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci i tablice
-	void zapisz_ciag_2d_do_pliku(const char* nazwa_pliku, const std::vector<std::vector<int>>& data, char delimiter_val = PRO_FILE_VALUE_DELIMITER, char delimiter_array = PRO_FILE_ARRAY_DELIMITER);
 
 	// odczytuje tablice z pliku wejsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci
 	std::vector<int> odczytaj_ciag_z_pliku(const char* nazwa_pliku, char delimiter = PRO_FILE_VALUE_DELIMITER);
@@ -60,6 +57,54 @@ namespace pro
 
 	// zwraca parê iteratorów, na której wykonywane maj¹ byæ operacje dla tablicy 2-wymiarowej dla n-tego w¹tku przy zdefiniowanej ³¹cznej liczbie wykoszystanych w¹tków
 	std::pair<std::vector<std::vector<int>>::const_iterator, std::vector<std::vector<int>>::const_iterator> thread_bounds(const std::vector<std::vector<int>>& data, int thread_count, int thread_id);
+
+
+
+	// zapisuje tablice do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci
+	template<class T>
+	void zapisz_ciag_do_pliku(const char* nazwa_pliku, const std::vector<T>& arr, char delimiter = PRO_FILE_VALUE_DELIMITER)
+	{
+		// otwarcie pliku do zapisu
+		std::fstream ofs(nazwa_pliku, std::ios::out);
+
+		// weryfikacja otwarcia pliku
+		if (!ofs.good())
+			// b³¹d przy próbie otwarcia pliku
+			throw std::string("Nie udalo sie otworzyc pliku ") + nazwa_pliku + " do zapisu!";
+
+		// dla ka¿dego elementu tablicy
+		for (const auto& el : arr)
+			// wpisane wartoœci do pliku razem ze znakiem koñca wartoœci
+			ofs << el << delimiter;
+	}
+
+	// zapisuje tablice dwuwymiarow¹ do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci i tablice
+	template<class T>
+	void zapisz_ciag_2d_do_pliku(const char* nazwa_pliku, const std::vector<std::vector<T>>& data, char delimiter_val = PRO_FILE_VALUE_DELIMITER, char delimiter_array = PRO_FILE_ARRAY_DELIMITER)
+	{
+		// otwarcie pliku do zapisu
+		std::fstream ofs(nazwa_pliku, std::ios::out);
+
+		// weryfikacja otwarcia pliku
+		if (!ofs.good())
+			// b³¹d przy próbie otwarcia pliku
+			throw std::string("Nie udalo sie otworzyc pliku ") + nazwa_pliku + " do zapisu!";
+
+		// dla ka¿dego podci¹gu
+		for (const auto& arr : data)
+		{
+			//dla ka¿dego elementu tablicy
+			for (const auto& el : arr)
+			{
+				// wpisane wartoœci do pliku razem ze znakiem koñca wartoœci
+				ofs << el << delimiter_val;
+			}
+
+			// wpisane znaku koñca tabeli
+			ofs << delimiter_array;
+		}
+
+	}
 }
 
 #endif

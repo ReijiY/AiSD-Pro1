@@ -140,6 +140,33 @@ std::vector<int>::iterator pro::set_intersection(const std::vector<int>& arr1, c
 	return res;
 }
 
+void pro::opisz_ciag(const std::vector<int>& arr)
+{
+	std::cout << "<int>[" << arr.size() << "]\n";
+}
+
+void pro::opisz_ciag(const std::vector<std::vector<int>>& arr)
+{
+	std::cout << "<int>[";
+	
+	if (arr.size() > 0)
+	{
+		int size = arr[0].size();
+		int i;
+		for (i = 1; i < arr.size(); i++)
+		{
+			if (arr[i].size() != size)
+			{
+				std::cout << "?x";
+				break;
+			}
+		}
+		if (i == arr.size()) std::cout << size << "x";
+	}
+
+	std::cout <<arr.size() << "]\n";
+}
+
 // wypisuje tablice na ekranie
 void pro::wypisz_ciag(const std::vector<int>& arr, unsigned spacing)
 {
@@ -192,50 +219,6 @@ void pro::wypisz_ciag(const std::vector<std::vector<int>>& data, unsigned spacin
 		// wypisz wartoœci ci¹gu 1-wymiarowego wykorzystuj¹c istniaj¹c¹ funkcjê wypisz_ci¹g
 		pro::wypisz_ciag(arr, spacing);
 	}
-}
-
-// zapisuje tablice do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci
-void pro::zapisz_ciag_do_pliku(const char* nazwa_pliku, const std::vector<int>& arr, char delimiter)
-{	
-	// otwarcie pliku do zapisu
-	std::fstream ofs(nazwa_pliku, std::ios::out);
-
-	// weryfikacja otwarcia pliku
-	if (!ofs.good())
-		// b³¹d przy próbie otwarcia pliku
-		throw std::string("Nie udalo sie otworzyc pliku ") + nazwa_pliku + " do zapisu!";
-
-	// dla ka¿dego elementu tablicy
-	for (const auto &el : arr) 
-		// wpisane wartoœci do pliku razem ze znakiem koñca wartoœci
-		ofs << el << delimiter;
-}
-
-// zapisuje tablice dwuwymiarow¹ do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci i tablice
-void pro::zapisz_ciag_2d_do_pliku(const char* nazwa_pliku, const std::vector<std::vector<int>>& data, char delimiter_val, char delimiter_array)
-{
-	// otwarcie pliku do zapisu
-	std::fstream ofs(nazwa_pliku, std::ios::out);
-
-	// weryfikacja otwarcia pliku
-	if (!ofs.good())
-		// b³¹d przy próbie otwarcia pliku
-		throw std::string("Nie udalo sie otworzyc pliku ") + nazwa_pliku + " do zapisu!";
-
-	// dla ka¿dego podci¹gu
-	for (const auto& arr : data)
-	{
-		//dla ka¿dego elementu tablicy
-		for (const auto& el : arr)
-		{
-			// wpisane wartoœci do pliku razem ze znakiem koñca wartoœci
-			ofs << el << delimiter_val;
-		}
-
-		// wpisane znaku koñca tabeli
-		ofs << delimiter_array;
-	}
-		
 }
 
 // odczytuje tablice z pliku wejsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci
