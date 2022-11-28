@@ -1,0 +1,30 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {polish}{}\relax 
+\contentsline {section}{\numberline {1}$<$strong$>$Zadanie 10.$<$/strong$>$}{1}{}%
+\contentsline {paragraph}{\numberline {1.0.0.1}Sprawdź, które elementy tablicy dwuwymiariowej występują w każdym wierszu tej tablicy.}{1}{}%
+\contentsline {subsubsection}{\numberline {1.0.1}$<$strong$>$\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Przykład.$<$/strong$>$}{1}{}%
+\contentsline {section}{\numberline {2}Indeks plików}{1}{}%
+\contentsline {subsection}{\numberline {2.1}Lista plików}{1}{}%
+\contentsline {section}{\numberline {3}Dokumentacja plików}{1}{}%
+\contentsline {subsection}{\numberline {3.1}Dokumentacja pliku projekt1.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{1}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}Opis szczegĂłĹ‚owy}{3}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}Dokumentacja funkcji}{3}{}%
+\contentsline {paragraph}{\numberline {3.1.2.1}generuj\_ciag\_z\_zakresu()}{3}{}%
+\contentsline {paragraph}{\numberline {3.1.2.2}generuj\_losowy\_ciag()}{3}{}%
+\contentsline {paragraph}{\numberline {3.1.2.3}generuj\_losowy\_ciag\_2d()}{4}{}%
+\contentsline {paragraph}{\numberline {3.1.2.4}linear\_search\_iterator()}{4}{}%
+\contentsline {paragraph}{\numberline {3.1.2.5}losowa\_liczba()}{4}{}%
+\contentsline {paragraph}{\numberline {3.1.2.6}odczytaj\_ciag\_2d\_z\_pliku()}{5}{}%
+\contentsline {paragraph}{\numberline {3.1.2.7}odczytaj\_ciag\_z\_pliku()}{5}{}%
+\contentsline {paragraph}{\numberline {3.1.2.8}opisz\_ciag()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{5}{}%
+\contentsline {paragraph}{\numberline {3.1.2.9}opisz\_ciag()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{6}{}%
+\contentsline {paragraph}{\numberline {3.1.2.10}quicksort\_iterator()}{6}{}%
+\contentsline {paragraph}{\numberline {3.1.2.11}quicksort\_iterator\_partition()}{6}{}%
+\contentsline {paragraph}{\numberline {3.1.2.12}set\_intersection()}{7}{}%
+\contentsline {paragraph}{\numberline {3.1.2.13}thread\_bounds()}{7}{}%
+\contentsline {paragraph}{\numberline {3.1.2.14}wypisz\_ciag()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{7}{}%
+\contentsline {paragraph}{\numberline {3.1.2.15}wypisz\_ciag()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{8}{}%
+\contentsline {paragraph}{\numberline {3.1.2.16}zapisz\_ciag\_2d\_do\_pliku()}{8}{}%
+\contentsline {paragraph}{\numberline {3.1.2.17}zapisz\_ciag\_do\_pliku()}{9}{}%
+\contentsline {subsection}{\numberline {3.2}projekt1.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{9}{}%
+\contentsline {section}{Skorowidz}{13}{}%

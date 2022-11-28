@@ -4,7 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Pliki wyjœciowe doxygen
-doxygen_output
+doxygen_output/*/
+!doxygen_output/latex/
 
 # Pliki testowe projektu
 [Tt]est/

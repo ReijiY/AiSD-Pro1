@@ -1,0 +1,439 @@
+\doxysubsection{Dokumentacja pliku projekt1.\+h}
+\label{projekt1_8h}\index{projekt1.h@{projekt1.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$deque$>$}\newline
+\doxysubsubsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{projekt1_8h_ae891d7fed4bcf12243b151ccb74edc51}} 
+\#define {\bfseries PRO\+\_\+\+FILE\+\_\+\+VALUE\+\_\+\+DELIMITER}~\textquotesingle{},\textquotesingle{}
+\item 
+\mbox{\label{projekt1_8h_abbf5797351c13a6c046c0dd8cb8aa74a}} 
+\#define {\bfseries PRO\+\_\+\+FILE\+\_\+\+ARRAY\+\_\+\+DELIMITER}~\textquotesingle{}\textbackslash{}n\textquotesingle{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{projekt1_8h_a56ca09f6e9eaa91e01a7d30064a887d0}} 
+void {\bfseries pro\+::init} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje bibliotekę pomocniczą. \end{DoxyCompactList}\item 
+int \textbf{ pro\+::losowa\+\_\+liczba} (int min, int max)
+\begin{DoxyCompactList}\small\item\em Generuje losową liczbę z przedziału [min, max]. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \textbf{ pro\+::generuj\+\_\+losowy\+\_\+ciag} (int min, int max, int width)
+\begin{DoxyCompactList}\small\item\em Generuje losowy ciag o podanej długości z wartościami z podanego przedziału. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \textbf{ pro\+::generuj\+\_\+losowy\+\_\+ciag\+\_\+2d} (int min, int max, int width, int height)
+\begin{DoxyCompactList}\small\item\em Generuje losowy dwuwymiarowy ciag o podanych wymiarach z wartościami z podanego przedziału. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \textbf{ pro\+::generuj\+\_\+ciag\+\_\+z\+\_\+zakresu} (int start, int end, int step=1)
+\begin{DoxyCompactList}\small\item\em Zwraca ciag z zakresu start do end z krokiem step. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$\+::iterator \textbf{ pro\+::quicksort\+\_\+iterator\+\_\+partition} (std\+::vector$<$ int $>$\+::iterator begin, std\+::vector$<$ int $>$\+::iterator end)
+\begin{DoxyCompactList}\small\item\em Funkcja pomocnicza sortowania quicksort. \end{DoxyCompactList}\item 
+void \textbf{ pro\+::quicksort\+\_\+iterator} (std\+::vector$<$ int $>$\+::iterator begin, std\+::vector$<$ int $>$\+::iterator end)
+\begin{DoxyCompactList}\small\item\em Sortowanie metodą quicksort na podanym przedziale. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$\+::iterator \textbf{ pro\+::linear\+\_\+search\+\_\+iterator} (std\+::vector$<$ int $>$ \&arr, int val)
+\begin{DoxyCompactList}\small\item\em Przeprowadza wyszukiwanie liniowe w wartościach tablicy. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$\+::iterator \textbf{ pro\+::set\+\_\+intersection} (const std\+::vector$<$ int $>$ \&arr1, const std\+::vector$<$ int $>$ \&arr2, std\+::vector$<$ int $>$\+::iterator res)
+\begin{DoxyCompactList}\small\item\em Wyszukuje wspólne elementy dwóch tablic. \end{DoxyCompactList}\item 
+void \textbf{ pro\+::opisz\+\_\+ciag} (const std\+::vector$<$ int $>$ \&arr)
+\begin{DoxyCompactList}\small\item\em Wypisuje w konsoli wymiary tablicy. \end{DoxyCompactList}\item 
+void \textbf{ pro\+::opisz\+\_\+ciag} (const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&arr)
+\begin{DoxyCompactList}\small\item\em Wypisuje w konsoli wymiary tablicy. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \textbf{ pro\+::odczytaj\+\_\+ciag\+\_\+z\+\_\+pliku} (const char $\ast$nazwa\+\_\+pliku, char delimiter=PRO\+\_\+\+FILE\+\_\+\+VALUE\+\_\+\+DELIMITER)
+\begin{DoxyCompactList}\small\item\em Odczytuje ciąg z pliku wejściowego. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \textbf{ pro\+::odczytaj\+\_\+ciag\+\_\+2d\+\_\+z\+\_\+pliku} (const char $\ast$nazwa\+\_\+pliku, char delimiter\+\_\+val=PRO\+\_\+\+FILE\+\_\+\+VALUE\+\_\+\+DELIMITER, char delimiter\+\_\+array=PRO\+\_\+\+FILE\+\_\+\+ARRAY\+\_\+\+DELIMITER)
+\begin{DoxyCompactList}\small\item\em Odczytuje dwuwymiarową tablicę z pliku wejściowego. \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::vector$<$ std\+::vector$<$ int $>$ $>$\+::const\+\_\+iterator, std\+::vector$<$ std\+::vector$<$ int $>$ $>$\+::const\+\_\+iterator $>$ \textbf{ pro\+::thread\+\_\+bounds} (const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&data, int thread\+\_\+count, int thread\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Oblicza zakres danych, na których mają być wykonane operacje dla podanego wątku. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \textbf{ pro\+::wypisz\+\_\+ciag} (const std\+::vector$<$ T $>$ \&arr, unsigned spacing=0)
+\begin{DoxyCompactList}\small\item\em Wypisuje zawartość tablicy na ekranie. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \textbf{ pro\+::wypisz\+\_\+ciag} (const std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&data, unsigned spacing=0)
+\begin{DoxyCompactList}\small\item\em Wypisuje zawartość tablicy dwuwymiarowej na ekranie. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \textbf{ pro\+::zapisz\+\_\+ciag\+\_\+do\+\_\+pliku} (const char $\ast$nazwa\+\_\+pliku, const std\+::vector$<$ T $>$ \&data, char delimiter=PRO\+\_\+\+FILE\+\_\+\+VALUE\+\_\+\+DELIMITER)
+\begin{DoxyCompactList}\small\item\em Zapisuje ciąg do pliku wyjściowego. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \textbf{ pro\+::zapisz\+\_\+ciag\+\_\+2d\+\_\+do\+\_\+pliku} (const char $\ast$nazwa\+\_\+pliku, const std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&data, char delimiter\+\_\+val=PRO\+\_\+\+FILE\+\_\+\+VALUE\+\_\+\+DELIMITER, char delimiter\+\_\+array=PRO\+\_\+\+FILE\+\_\+\+ARRAY\+\_\+\+DELIMITER)
+\begin{DoxyCompactList}\small\item\em Zapisuje tablilcę dwuwymiarową do pliku wyjściowego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Opis szczegĂłĹ‚owy}
+\begin{DoxyAuthor}{Autor}
+Dariusz Strojny 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+November 2022 
+\end{DoxyDate}
+
+
+\doxysubsubsection{Dokumentacja funkcji}
+\mbox{\label{projekt1_8h_a355cadb77dc6f28a773474e010fd8dc7}} 
+\index{projekt1.h@{projekt1.h}!generuj\_ciag\_z\_zakresu@{generuj\_ciag\_z\_zakresu}}
+\index{generuj\_ciag\_z\_zakresu@{generuj\_ciag\_z\_zakresu}!projekt1.h@{projekt1.h}}
+\doxyparagraph{generuj\_ciag\_z\_zakresu()}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ pro\+::generuj\+\_\+ciag\+\_\+z\+\_\+zakresu (\begin{DoxyParamCaption}\item[{int}]{start,  }\item[{int}]{end,  }\item[{int}]{step = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Zwraca ciag z zakresu start do end z krokiem step. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{np. f(2, 6, 2) -\/> [2, 4, 6]}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parametry}
+{\em start} & Początkowa wartość iteratora \\
+\hline
+{\em end} & Maksymalna wartość iteratora (włącznie) \\
+\hline
+{\em step} & Krok o jaki zwiększany jest iterator \\
+\hline
+\end{DoxyParams}
+\mbox{\label{projekt1_8h_ae75708673673cc032f2c5856f327b38f}} 
+\index{projekt1.h@{projekt1.h}!generuj\_losowy\_ciag@{generuj\_losowy\_ciag}}
+\index{generuj\_losowy\_ciag@{generuj\_losowy\_ciag}!projekt1.h@{projekt1.h}}
+\doxyparagraph{generuj\_losowy\_ciag()}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ pro\+::generuj\+\_\+losowy\+\_\+ciag (\begin{DoxyParamCaption}\item[{int}]{min,  }\item[{int}]{max,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+
+Generuje losowy ciag o podanej długości z wartościami z podanego przedziału. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em min} & Minimalna wartość elementu w ciągu \\
+\hline
+{\em max} & Maksymalna wartosć elementu w ciągu \\
+\hline
+{\em width} & Ilość elementów w ciągu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+wygenerowany ciąg 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_a75f245fa0ac116d5fe0961506838bcb9}} 
+\index{projekt1.h@{projekt1.h}!generuj\_losowy\_ciag\_2d@{generuj\_losowy\_ciag\_2d}}
+\index{generuj\_losowy\_ciag\_2d@{generuj\_losowy\_ciag\_2d}!projekt1.h@{projekt1.h}}
+\doxyparagraph{generuj\_losowy\_ciag\_2d()}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ int $>$ $>$ pro\+::generuj\+\_\+losowy\+\_\+ciag\+\_\+2d (\begin{DoxyParamCaption}\item[{int}]{min,  }\item[{int}]{max,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Generuje losowy dwuwymiarowy ciag o podanych wymiarach z wartościami z podanego przedziału. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em min} & Minimalna wartość elementu w ciągu \\
+\hline
+{\em max} & Maksymalna wartosć elementu w ciągu \\
+\hline
+{\em width} & Ilość kolumn w ciągu \\
+\hline
+{\em height} & Ilość wierszy ciągu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+wygenerowany ciąg 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_a5177cd02656c7cebabee46524e71f67b}} 
+\index{projekt1.h@{projekt1.h}!linear\_search\_iterator@{linear\_search\_iterator}}
+\index{linear\_search\_iterator@{linear\_search\_iterator}!projekt1.h@{projekt1.h}}
+\doxyparagraph{linear\_search\_iterator()}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$\+::iterator pro\+::linear\+\_\+search\+\_\+iterator (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{arr,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Przeprowadza wyszukiwanie liniowe w wartościach tablicy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em arr} & Tablica, na której wykonywane jest wyszukiwanie \\
+\hline
+{\em val} & Wartość szukana w tablicy\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Iterator wskazujący na znaleziony element lub na koniec przedziału 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_ae4ce6058f573067acf32061a56545371}} 
+\index{projekt1.h@{projekt1.h}!losowa\_liczba@{losowa\_liczba}}
+\index{losowa\_liczba@{losowa\_liczba}!projekt1.h@{projekt1.h}}
+\doxyparagraph{losowa\_liczba()}
+{\footnotesize\ttfamily int pro\+::losowa\+\_\+liczba (\begin{DoxyParamCaption}\item[{int}]{min,  }\item[{int}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generuje losową liczbę z przedziału [min, max]. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em min} & Minimalna wartość liczby \\
+\hline
+{\em max} & Maksymalna wartosć liczby\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+wygenerowana liczba 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_ab3782c003ff0528c46b4b961887bdc32}} 
+\index{projekt1.h@{projekt1.h}!odczytaj\_ciag\_2d\_z\_pliku@{odczytaj\_ciag\_2d\_z\_pliku}}
+\index{odczytaj\_ciag\_2d\_z\_pliku@{odczytaj\_ciag\_2d\_z\_pliku}!projekt1.h@{projekt1.h}}
+\doxyparagraph{odczytaj\_ciag\_2d\_z\_pliku()}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ int $>$ $>$ pro\+::odczytaj\+\_\+ciag\+\_\+2d\+\_\+z\+\_\+pliku (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nazwa\+\_\+pliku,  }\item[{char}]{delimiter\+\_\+val = {\ttfamily PRO\+\_\+FILE\+\_\+VALUE\+\_\+DELIMITER},  }\item[{char}]{delimiter\+\_\+array = {\ttfamily PRO\+\_\+FILE\+\_\+ARRAY\+\_\+DELIMITER} }\end{DoxyParamCaption})}
+
+
+
+Odczytuje dwuwymiarową tablicę z pliku wejściowego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em nazwa\+\_\+pliku} & Ścieżka do pliku \\
+\hline
+{\em delimiter\+\_\+val} & Znak oddzielający wartości wiersza w pliku \\
+\hline
+{\em delimiter\+\_\+array} & Znak oddzielający kolumny w pliku\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Dwuwymiarowa tablica odczytany z pliku 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_a534e1065bc1853328c82d4c98c89bca4}} 
+\index{projekt1.h@{projekt1.h}!odczytaj\_ciag\_z\_pliku@{odczytaj\_ciag\_z\_pliku}}
+\index{odczytaj\_ciag\_z\_pliku@{odczytaj\_ciag\_z\_pliku}!projekt1.h@{projekt1.h}}
+\doxyparagraph{odczytaj\_ciag\_z\_pliku()}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ pro\+::odczytaj\+\_\+ciag\+\_\+z\+\_\+pliku (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nazwa\+\_\+pliku,  }\item[{char}]{delimiter = {\ttfamily PRO\+\_\+FILE\+\_\+VALUE\+\_\+DELIMITER} }\end{DoxyParamCaption})}
+
+
+
+Odczytuje ciąg z pliku wejściowego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em nazwa\+\_\+pliku} & Ścieżka do pliku \\
+\hline
+{\em delimiter} & Znak oddzielający wartości w pliku\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Ciąg odczytany z pliku 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_a96afe3fb55286238dae8bbf8c163e437}} 
+\index{projekt1.h@{projekt1.h}!opisz\_ciag@{opisz\_ciag}}
+\index{opisz\_ciag@{opisz\_ciag}!projekt1.h@{projekt1.h}}
+\doxyparagraph{opisz\_ciag()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void pro\+::opisz\+\_\+ciag (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{arr }\end{DoxyParamCaption})}
+
+
+
+Wypisuje w konsoli wymiary tablicy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em arr} & opisywana tablica \\
+\hline
+\end{DoxyParams}
+\mbox{\label{projekt1_8h_a63b48406e221d5d728aadd5ec8029b79}} 
+\index{projekt1.h@{projekt1.h}!opisz\_ciag@{opisz\_ciag}}
+\index{opisz\_ciag@{opisz\_ciag}!projekt1.h@{projekt1.h}}
+\doxyparagraph{opisz\_ciag()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void pro\+::opisz\+\_\+ciag (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&}]{arr }\end{DoxyParamCaption})}
+
+
+
+Wypisuje w konsoli wymiary tablicy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em arr} & opisywana tablica \\
+\hline
+\end{DoxyParams}
+\mbox{\label{projekt1_8h_a5d542471383e08704f184f2fbde0d5e3}} 
+\index{projekt1.h@{projekt1.h}!quicksort\_iterator@{quicksort\_iterator}}
+\index{quicksort\_iterator@{quicksort\_iterator}!projekt1.h@{projekt1.h}}
+\doxyparagraph{quicksort\_iterator()}
+{\footnotesize\ttfamily void pro\+::quicksort\+\_\+iterator (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$\+::iterator}]{begin,  }\item[{std\+::vector$<$ int $>$\+::iterator}]{end }\end{DoxyParamCaption})}
+
+
+
+Sortowanie metodą quicksort na podanym przedziale. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em begin} & Iterator wskazujący na początek przedziału \\
+\hline
+{\em end} & Iterator wskazujący na koniec przedziału \\
+\hline
+\end{DoxyParams}
+\mbox{\label{projekt1_8h_a178179004685d0c2ae2a386e9491b474}} 
+\index{projekt1.h@{projekt1.h}!quicksort\_iterator\_partition@{quicksort\_iterator\_partition}}
+\index{quicksort\_iterator\_partition@{quicksort\_iterator\_partition}!projekt1.h@{projekt1.h}}
+\doxyparagraph{quicksort\_iterator\_partition()}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$\+::iterator pro\+::quicksort\+\_\+iterator\+\_\+partition (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$\+::iterator}]{begin,  }\item[{std\+::vector$<$ int $>$\+::iterator}]{end }\end{DoxyParamCaption})}
+
+
+
+Funkcja pomocnicza sortowania quicksort. 
+
+Dzieli ciąg danych na dwie części przenosząc elementy mniejsze lub równe pierwszej wartości na jej lewą stronę a pozostałe na jej prawą stronę.
+
+
+\begin{DoxyParams}{Parametry}
+{\em begin} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Iterator wskazujący na wartość oddzielającą oba ciągi 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_a85b78b0b51f816ca8f4de045a75514d8}} 
+\index{projekt1.h@{projekt1.h}!set\_intersection@{set\_intersection}}
+\index{set\_intersection@{set\_intersection}!projekt1.h@{projekt1.h}}
+\doxyparagraph{set\_intersection()}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$\+::iterator pro\+::set\+\_\+intersection (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{arr1,  }\item[{const std\+::vector$<$ int $>$ \&}]{arr2,  }\item[{std\+::vector$<$ int $>$\+::iterator}]{res }\end{DoxyParamCaption})}
+
+
+
+Wyszukuje wspólne elementy dwóch tablic. 
+
+Funkcja wykonuje wyszukiwanie wspólnych elementów poprzez skrzyżowanie ze sobą dwóch tablic. Tablice wejściowe muszą być posortowane rosnąco.
+
+
+\begin{DoxyParams}{Parametry}
+{\em arr1} & Pierwsza tablica \\
+\hline
+{\em arr2} & Druga tablica \\
+\hline
+{\em res} & Iterator wskazujący na pierwszy element tablicy o rozmiarze przynajmniej min(rozmiar arr1, rozmiar arr2)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Iterator wskazujący na element za ostatnim wpisanym elementem 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_ad046f235d7632bcc1d342a5e25a2d1e8}} 
+\index{projekt1.h@{projekt1.h}!thread\_bounds@{thread\_bounds}}
+\index{thread\_bounds@{thread\_bounds}!projekt1.h@{projekt1.h}}
+\doxyparagraph{thread\_bounds()}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ std\+::vector$<$ int $>$ $>$\+::const\+\_\+iterator, std\+::vector$<$ std\+::vector$<$ int $>$ $>$\+::const\+\_\+iterator $>$ pro\+::thread\+\_\+bounds (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&}]{data,  }\item[{int}]{thread\+\_\+count,  }\item[{int}]{thread\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Oblicza zakres danych, na których mają być wykonane operacje dla podanego wątku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em data} & Dane do podzielenia \\
+\hline
+{\em thread\+\_\+count} & Łączna ilość wątków \\
+\hline
+{\em thread\+\_\+id} & Numer wątku, dla którego obliczany jest zakres\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Para iteratorów wskazujących na początek i koniec wyznaczonego zakresu danych 
+\end{DoxyReturn}
+\mbox{\label{projekt1_8h_a85ce2a24feeab6d97d4b4446b05e8ca1}} 
+\index{projekt1.h@{projekt1.h}!wypisz\_ciag@{wypisz\_ciag}}
+\index{wypisz\_ciag@{wypisz\_ciag}!projekt1.h@{projekt1.h}}
+\doxyparagraph{wypisz\_ciag()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void pro\+::wypisz\+\_\+ciag (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&}]{data,  }\item[{unsigned}]{spacing = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Wypisuje zawartość tablicy dwuwymiarowej na ekranie. 
+
+
+\begin{DoxyTemplParams}{Parametry Szablonu}
+{\em T} & Rodzaj danych przechowywanych w tablicy \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parametry}
+{\em data} & Tablica do wyświetlenia \\
+\hline
+{\em spacing} & Dopełnienie każdej komórki danych znakami białymi do podanej ilości znaków \\
+\hline
+\end{DoxyParams}
+\mbox{\label{projekt1_8h_a28bb776daeb45fed44c93e839a5cd86b}} 
+\index{projekt1.h@{projekt1.h}!wypisz\_ciag@{wypisz\_ciag}}
+\index{wypisz\_ciag@{wypisz\_ciag}!projekt1.h@{projekt1.h}}
+\doxyparagraph{wypisz\_ciag()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void pro\+::wypisz\+\_\+ciag (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{arr,  }\item[{unsigned}]{spacing = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Wypisuje zawartość tablicy na ekranie. 
+
+
+\begin{DoxyTemplParams}{Parametry Szablonu}
+{\em T} & Rodzaj danych przechowywanych w tablicy \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parametry}
+{\em arr} & Tablica do wyświetlenia \\
+\hline
+{\em spacing} & Dopełnienie każdej komórki danych znakami białymi do podanej ilości znaków \\
+\hline
+\end{DoxyParams}
+\mbox{\label{projekt1_8h_a41d7afc6702d6ddadb6992ff491fb854}} 
+\index{projekt1.h@{projekt1.h}!zapisz\_ciag\_2d\_do\_pliku@{zapisz\_ciag\_2d\_do\_pliku}}
+\index{zapisz\_ciag\_2d\_do\_pliku@{zapisz\_ciag\_2d\_do\_pliku}!projekt1.h@{projekt1.h}}
+\doxyparagraph{zapisz\_ciag\_2d\_do\_pliku()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void pro\+::zapisz\+\_\+ciag\+\_\+2d\+\_\+do\+\_\+pliku (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nazwa\+\_\+pliku,  }\item[{const std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&}]{data,  }\item[{char}]{delimiter\+\_\+val = {\ttfamily PRO\+\_\+FILE\+\_\+VALUE\+\_\+DELIMITER},  }\item[{char}]{delimiter\+\_\+array = {\ttfamily PRO\+\_\+FILE\+\_\+ARRAY\+\_\+DELIMITER} }\end{DoxyParamCaption})}
+
+
+
+Zapisuje tablilcę dwuwymiarową do pliku wyjściowego. 
+
+
+\begin{DoxyTemplParams}{Parametry Szablonu}
+{\em T} & Rodzaj danych przechowywanych w tablicy \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parametry}
+{\em nazwa\+\_\+pliku} & Ścieżka do pliku \\
+\hline
+{\em data} & Tablica do zapisania \\
+\hline
+{\em delimiter\+\_\+val} & Znak oddzielający wartości wiersza w pliku \\
+\hline
+{\em delimiter\+\_\+array} & Znak oddzielający kolumny w pliku \\
+\hline
+\end{DoxyParams}
+\mbox{\label{projekt1_8h_adcb58358b3d6509a051f2122639ae119}} 
+\index{projekt1.h@{projekt1.h}!zapisz\_ciag\_do\_pliku@{zapisz\_ciag\_do\_pliku}}
+\index{zapisz\_ciag\_do\_pliku@{zapisz\_ciag\_do\_pliku}!projekt1.h@{projekt1.h}}
+\doxyparagraph{zapisz\_ciag\_do\_pliku()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void pro\+::zapisz\+\_\+ciag\+\_\+do\+\_\+pliku (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nazwa\+\_\+pliku,  }\item[{const std\+::vector$<$ T $>$ \&}]{data,  }\item[{char}]{delimiter = {\ttfamily PRO\+\_\+FILE\+\_\+VALUE\+\_\+DELIMITER} }\end{DoxyParamCaption})}
+
+
+
+Zapisuje ciąg do pliku wyjściowego. 
+
+
+\begin{DoxyTemplParams}{Parametry Szablonu}
+{\em T} & Rodzaj danych przechowywanych w ciągu \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parametry}
+{\em nazwa\+\_\+pliku} & Ścieżka do pliku \\
+\hline
+{\em data} & Ciąg do zapisania \\
+\hline
+{\em delimiter} & Znak oddzielający wartości w pliku \\
+\hline
+\end{DoxyParams}
