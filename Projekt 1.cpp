@@ -1,9 +1,9 @@
-﻿#include <iostream>
+#include <iostream>
 
 #include "projekt1.h"
 
-#include <algorithm>    // std::sort
-#include <chrono>       // std::chrono::high_resolution_clock
+
+#include <chrono>
 
 #include <thread>
 #include <future>
@@ -18,26 +18,25 @@ std::vector<int> znajdz_powtorzenia_a(const std::vector<std::vector<int>>::const
 // algorytm - realizacja sprytniejsza
 std::vector<int> znajdz_powtorzenia_b(const std::vector<std::vector<int>>::const_iterator& data_first, const std::vector<std::vector<int>>::const_iterator& data_last);
 
-std::vector<int> znajdz_powtorzenia_multithread_a(const std::vector<std::vector<int>>& data, int thread_count, bool silent = true);
-
-std::vector<int> znajdz_powtorzenia_multithread_b(const std::vector<std::vector<int>>& data, int thread_count, bool silent = true);
+template<class T>
+std::vector<int> znajdz_powtorzenia_multithread(const std::vector<std::vector<int>>& data, int thread_count, T sorting_algorithm, bool silent = true);
 
 
 int main()
 {
     pro::init();
- 
-    auto wyniki = testy(40, 100000, 500, 12);
+
+    auto wyniki = testy(12, 100000, 200, 12);
 
     try
     {
         pro::zapisz_ciag_2d_do_pliku("test/Testy2.txt", wyniki);
     }
-    catch (std::string &e)
+    catch (std::string& e)
     {
         std::cout << e << "\n";
     }
-    
+
     return 0;
 }
 
@@ -55,8 +54,8 @@ std::vector<std::vector<double>> testy(int ilosc_testow, int max_w, int max_h, i
     {
         std::vector<double> zebrane_dane;
 
-        int width =     (double)(nr_testu + 1.0) / (double)ilosc_testow * max_w;
-        int height =    (double)(nr_testu + 1.0) / (double)ilosc_testow * max_h;
+        int width = (double)(nr_testu + 1.0) / (double)ilosc_testow * max_w;
+        int height = (double)(nr_testu + 1.0) / (double)ilosc_testow * max_h;
 
         zebrane_dane.push_back(width);
         zebrane_dane.push_back(height);
@@ -66,35 +65,44 @@ std::vector<std::vector<double>> testy(int ilosc_testow, int max_w, int max_h, i
         auto data = pro::generuj_losowy_ciag_2d(0, 9, width, height);
 
         std::cout << "Ciag wejsciowy: ";
+        std::cout << "<int>";
         pro::opisz_ciag(data);
 
-        std::cout << "Start A:\n";
-        start = std::chrono::high_resolution_clock::now();
-        wynik_obliczen = znajdz_powtorzenia_multithread_a(data, ilosc_watkow);
-        stop = std::chrono::high_resolution_clock::now();
+        for (int i = 0; i < ilosc_testow; i++)
+        {
+            int watki = (double)(i + 1.0) / (double)ilosc_testow * ilosc_watkow;
 
-        timediff = stop - start;
+            std::cout << "Start A [" << watki << " thread(s)]:\n";
+            start = std::chrono::high_resolution_clock::now();
+            wynik_obliczen = znajdz_powtorzenia_multithread(data, watki, &znajdz_powtorzenia_a);
+            stop = std::chrono::high_resolution_clock::now();
 
-        zebrane_dane.push_back(timediff.count());
-        std::cout << "Czas wykonania algorytmu A: " << timediff.count() << "\n";
-        std::cout << "Ilosc wynikow: " << wynik_obliczen.size() << "\n";
+            timediff = stop - start;
 
-        pro::opisz_ciag(wynik_obliczen);
-        std::cout << "\n";
+            zebrane_dane.push_back(timediff.count());
+            std::cout << "Czas wykonania algorytmu A: " << timediff.count() << "\n";
+            std::cout << "Ilosc wynikow: " << wynik_obliczen.size() << "\n";
 
-        std::cout << "Start B:\n";
-        start = std::chrono::high_resolution_clock::now();
-        wynik_obliczen = znajdz_powtorzenia_multithread_b(data, ilosc_watkow);
-        stop = std::chrono::high_resolution_clock::now();
+            std::cout << "<int>";
+            pro::opisz_ciag(wynik_obliczen);
+            std::cout << "\n";
 
-        timediff = stop - start;
+            std::cout << "Start B [" << watki << " thread(s)]:\n";
+            start = std::chrono::high_resolution_clock::now();
+            wynik_obliczen = znajdz_powtorzenia_multithread(data, watki, &znajdz_powtorzenia_b);
+            stop = std::chrono::high_resolution_clock::now();
 
-        zebrane_dane.push_back(timediff.count());
-        std::cout << "Czas wykonania algorytmu B: " << timediff.count() << "\n";
-        std::cout << "Ilosc wynikow: " << wynik_obliczen.size() << "\n";
+            timediff = stop - start;
 
-        pro::opisz_ciag(wynik_obliczen);
-        std::cout << "\n";
+            zebrane_dane.push_back(timediff.count());
+            std::cout << "Czas wykonania algorytmu B: " << timediff.count() << "\n";
+            std::cout << "Ilosc wynikow: " << wynik_obliczen.size() << "\n";
+
+            std::cout << "<int>";
+            pro::opisz_ciag(wynik_obliczen);
+            std::cout << "\n";
+
+        }
 
 
         wyniki.push_back(zebrane_dane);
@@ -117,7 +125,7 @@ std::vector<int> znajdz_powtorzenia_a(const std::vector<std::vector<int>>::const
     std::vector<int>::iterator it;
 
     int empty_marker = -1;
-    while (std::find(powtorzenia.begin(), powtorzenia.end(), empty_marker) != powtorzenia.end()) empty_marker--;
+    while (pro::linear_search_iterator(powtorzenia, empty_marker) != powtorzenia.end()) empty_marker--;
 
     for (auto arr_i = data.begin() + 1; arr_i != data.end(); arr_i++)
     {
@@ -156,10 +164,11 @@ std::vector<int> znajdz_powtorzenia_b(const std::vector<std::vector<int>>::const
 
     std::vector<int>::iterator it;
 
+    pro::quicksort_iterator(powtorzenia.begin(), powtorzenia.end());
+
     for (auto arr_i = data.begin() + 1; arr_i != data.end(); arr_i++)
     {
-        std::sort(powtorzenia.begin(), powtorzenia.end());
-        std::sort(arr_i->begin(), arr_i->end());
+        pro::quicksort_iterator(arr_i->begin(), arr_i->end());
 
         it = pro::set_intersection(powtorzenia, *arr_i, bufor.begin());
 
@@ -173,38 +182,8 @@ std::vector<int> znajdz_powtorzenia_b(const std::vector<std::vector<int>>::const
     return powtorzenia;
 }
 
-std::vector<int> znajdz_powtorzenia_multithread_a(const std::vector<std::vector<int>>& data, int thread_count, bool silent)
-{
-    std::vector<std::future<std::vector<int>>> threads;
-
-    if(!silent) std::cout << "Uruchamianie watkow: \n";
-
-    for (int i = 0; i < thread_count; i++)
-    {
-        auto bound = pro::thread_bounds(data, thread_count, i);
-        if (std::distance(bound.first, bound.second) == 0) continue;
-
-        if (!silent) std::cout << i << ":[" << std::distance(data.begin(), bound.first) << ", " << std::distance(data.begin(), bound.second) << "] ";
-
-        threads.push_back(std::async(&znajdz_powtorzenia_a, bound.first, bound.second));
-    }
-    if (!silent) std::cout << "\n";
-
-    std::vector<std::vector<int>> res;
-
-    if (!silent) std::cout << "Odczytywanie wynikow z watkow: \n";
-
-    for (int i = 0; i < threads.size(); i++)
-    {
-        if (!silent) std::cout << i << " ";
-        res.push_back(threads[i].get());
-    }
-    if (!silent) std::cout << "\nScalanie wynikow\n";
-
-    return znajdz_powtorzenia_a(res.begin(), res.end());
-}
-
-std::vector<int> znajdz_powtorzenia_multithread_b(const std::vector<std::vector<int>>& data, int thread_count, bool silent)
+template<class T>
+std::vector<int> znajdz_powtorzenia_multithread(const std::vector<std::vector<int>>& data, int thread_count, T sorting_algorithm, bool silent)
 {
     std::vector<std::future<std::vector<int>>> threads;
 
@@ -217,7 +196,7 @@ std::vector<int> znajdz_powtorzenia_multithread_b(const std::vector<std::vector<
 
         if (!silent) std::cout << i << ":[" << std::distance(data.begin(), bound.first) << ", " << std::distance(data.begin(), bound.second) << "] ";
 
-        threads.push_back(std::async(&znajdz_powtorzenia_b, bound.first, bound.second));
+        threads.push_back(std::async(sorting_algorithm, bound.first, bound.second));
     }
     if (!silent) std::cout << "\n";
 
@@ -232,5 +211,5 @@ std::vector<int> znajdz_powtorzenia_multithread_b(const std::vector<std::vector<
     }
     if (!silent) std::cout << "\nScalanie wynikow\n";
 
-    return znajdz_powtorzenia_b(res.begin(), res.end());
+    return sorting_algorithm(res.begin(), res.end());
 }

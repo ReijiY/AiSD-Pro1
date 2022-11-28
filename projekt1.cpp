@@ -1,27 +1,25 @@
 #include "projekt1.h"
 
 
-// inicjalizuje bibliotekê pomocnicz¹
 void pro::init()
 {
 	// podanie wartoœci czasu do generatora liczb losowych
 	srand(time(NULL));
 }
 
-// generuje losow¹ liczbê z przedzia³u od min do max
 inline int pro::losowa_liczba(int min, int max)
 {
+	// zwrócenie losowej liczby z przedzia³u [min, max]
 	return rand() % ((max + 1) - min) + min;
 }
 
-// Generuje losowy ciag n wartosci z przedzialu od min do max
-std::vector<int> pro::generuj_losowy_ciag(int min, int max, int n)
+std::vector<int> pro::generuj_losowy_ciag(int min, int max, int width)
 {
 	// weryfikacja kolejnoœci argumentów w podanym zakresie
 	if (min > max) std::swap(min, max);
 
 	// utworzenie n-elementowego kontenera na losowy ciag
-	std::vector<int> res(n);
+	std::vector<int> res(width);
 
 	// generator losuj¹cy wartoœci z przedzia³u [min, max]
 	auto gen = [&min, &max]() {
@@ -35,13 +33,13 @@ std::vector<int> pro::generuj_losowy_ciag(int min, int max, int n)
 	return res;
 }
 
-std::vector<std::vector<int>> pro::generuj_losowy_ciag_2d(int min, int max, int w, int h)
+std::vector<std::vector<int>> pro::generuj_losowy_ciag_2d(int min, int max, int width, int height)
 {
 	// utworzenie kontenera na losowe ci¹gi
 	std::vector<std::vector<int>> res;
 	
 	// zmiana rozmiaru kontenera na h-elementowy
-	res.resize(h);
+	res.resize(height);
 
 	// generator losuj¹cy wartoœci z przedzia³u [min, max]
 	auto gen = [&min, &max]() {
@@ -52,7 +50,7 @@ std::vector<std::vector<int>> pro::generuj_losowy_ciag_2d(int min, int max, int 
 	for (auto &el : res)
 	{
 		// wpisanie pustego ci¹gu o rozmiarze w
-		el = std::vector<int>(w);
+		el = std::vector<int>(width);
 		
 		// wype³nienie losowego ci¹gu wartoœciami losowanymi przez generator
 		std::generate(el.begin(), el.end(), gen);
@@ -62,7 +60,6 @@ std::vector<std::vector<int>> pro::generuj_losowy_ciag_2d(int min, int max, int 
 	return res;
 }
 
-// generuje ciag z zakresu start do end z krokiem step, np. (2, 7, 2) -> [2, 4, 6]
 std::vector<int> pro::generuj_ciag_z_zakresu(int start, int end, int step)
 {
 	// weryfikacja kolejnoœci argumentów w podanym zakresie
@@ -95,14 +92,81 @@ std::vector<int> pro::generuj_ciag_z_zakresu(int start, int end, int step)
 	return res;
 }
 
-// przeprowadza wyszukiwanie liniowe w wartoœciach tablicy zwracaj¹c iterator na znaleziony element lub iterator koñca tablicy
+std::vector<int>::iterator pro::quicksort_iterator_partition(std::vector<int>::iterator start, std::vector<int>::iterator end)
+{
+	// zabezpieczenie przed wywo³aniem na niew³aœciwym zakresie
+	if (std::distance(start, end) <= 0) return end;
+
+	// wybranie wartoœci pierwszego elementu zakresu jako elementu œrodkowego
+	int pivot = *start;
+
+	// wyznaczenie pozycji elementu dziel¹cego poprzez policzenie elementów o mniejszej lub tej samej wartoœci
+	int count = 0;
+	// dla iteratora przechodz¹cego od drugiego elementu do koñca przedzia³u
+	for (std::vector<int>::iterator it = start + 1; it != end; it++) {
+		// je¿eli wartoœæ wskazywana przez iterator jest mniejsza lub równa wartoœci pivot
+		if (*it <= pivot)
+		{
+			// zwiêksz licznik
+			count++;
+		}
+	}
+
+	// stworzenie iteratora na wyliczonej pozycji
+	std::vector<int>::iterator pivot_index = start + count;
+	// zamienienie wartoœci pierwszego elementu i elementu na wyznaczonym iteratorze
+	std::swap(*pivot_index, *start);
+
+	// stworzenie iteratorów wskazuj¹cych na pierwszy i ostatni element ci¹gu
+	std::vector<int>::iterator it_1 = start, it_2 = end - 1;
+
+	// dopóki oba iteratory nie przekroczy³y indeksu wartoœci pivot
+	while (it_1 < pivot_index && it_2 > pivot_index) {
+
+		// dopóki wartoœæ pierwszego iteratora jest mniejsza lub równa wartoœci pivot
+		while (*it_1 <= pivot) {
+			// zwiêksz pierwszy iterator
+			++it_1;
+		}
+
+		// dopóki wartoœæ drugiego iteratora jest wiêksza od wartoœci pivot
+		while (*it_2 > pivot) {
+			// zmniejsz drugi iterator
+			--it_2;
+		}
+
+		// je¿eli pierwszy iterator jest mniejszy od indeksu pivota i drugi iterator jest od niego wiêkszy
+		if (it_1 < pivot_index && it_2 > pivot_index) {
+			// zamieñ ze sob¹ wartoœci wskazywane przez iteratory
+			std::swap(*it_1++, *it_2--);
+		}
+	}
+
+	// zwróæ iterator wskazuj¹cy na wartoœæ pivota
+	return pivot_index;
+}
+
+void pro::quicksort_iterator(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	// zabezpieczenie przed wywo³aniem na niew³aœciwym zakresie oraz warunek koñcz¹cy pracê funckji rekurencyjnej
+	if (std::distance(begin, end) <= 0) return;
+
+	// podzia³ ci¹gu na dwie czêœci z wartoœciami odpowiednio mniejszymi i wiêkszymi od pierwszego elementu
+	std::vector<int>::iterator p = pro::quicksort_iterator_partition(begin, end);
+
+	// wykonanie sortowania na pierwszej po³owie podzielonego ci¹gu
+	pro::quicksort_iterator(begin, p);
+
+	// wykonanie sortowania na drugiej po³owie podzielonego ci¹gu
+	pro::quicksort_iterator(p + 1, end);
+}
+
 std::vector<int>::iterator pro::linear_search_iterator(std::vector<int>& arr, int val)
 {
 	// zwróæ wynik wyszukiwania liniowego zaimplementowanego w standardzie C++
 	return std::find(arr.begin(), arr.end(), val);
 }
 
-// wyszukuje wspólne elementy tablic arr1 i arr2 poprzez intersekcje oraz przepisuje je do tablicy res
 std::vector<int>::iterator pro::set_intersection(const std::vector<int>& arr1, const std::vector<int>& arr2, std::vector<int>::iterator res)
 {
 	// wyw³aszczenie iteratorów pocz¹tków i koñców tablic
@@ -142,86 +206,63 @@ std::vector<int>::iterator pro::set_intersection(const std::vector<int>& arr1, c
 
 void pro::opisz_ciag(const std::vector<int>& arr)
 {
-	std::cout << "<int>[" << arr.size() << "]\n";
+	// wypisanie rozmiaru ci¹gu
+	std::cout << "[" << arr.size() << "]\n";
 }
 
 void pro::opisz_ciag(const std::vector<std::vector<int>>& arr)
 {
-	std::cout << "<int>[";
-	
+	// je¿eli tablica posiada wiersze
 	if (arr.size() > 0)
 	{
-		int size = arr[0].size();
-		int i;
-		for (i = 1; i < arr.size(); i++)
+		// sprawdzenie czy wiersze s¹ tej samej d³ugoœci
+
+		int i, j, size = 0;
+
+		// dla ka¿dego wiersza
+		for (i = 0; i < arr.size(); i++)
 		{
-			if (arr[i].size() != size)
+			// przypisanie wartoœci tego wiersza do zmiennej
+			size = arr[i].size();
+
+			// dla ka¿dego nastêpnego wiersza
+			for (j = i + 1; j < arr.size(); j++)
 			{
-				std::cout << "?x";
+				// je¿eli d³ugoœæ wiersza jest inna ni¿ wartoœæ zapisanej zmiennej
+				if (arr[j].size() != size)
+				{
+					// przerwij pêtlê
+					break;
+				}
+			}
+
+			// je¿eli pêtla zosta³a przerwana
+			if (j < arr.size())
+			{
+				// przerwij szukanie ró¿nych wierszy
 				break;
 			}
 		}
-		if (i == arr.size()) std::cout << size << "x";
-	}
 
-	std::cout <<arr.size() << "]\n";
-}
-
-// wypisuje tablice na ekranie
-void pro::wypisz_ciag(const std::vector<int>& arr, unsigned spacing)
-{
-	std::cout << "[";
-
-	// je¿eli przekazana zosta³a domyœlna d³ugoœæ dope³nienia
-	if (spacing == 0)
-	{
-		// dla ka¿dego elementu tablicy
-		for (auto el = arr.begin(); el != arr.end(); el++)
+		// je¿eli pêtla zosta³a przerwana
+		if (i < arr.size())
 		{
-			// wypisanie wartoœci elementu
-			std::cout << *el;
-			// dla wartoœci innych ni¿ ostatnia wypisz znak ','
-			if (el != arr.end() - 1) std::cout << ",";
-		}
-	}
-	// w przeciwnym wypadku
-	else
-	{
-		// zabezpieczenie przed przypadkowym przepe³nieniem w dó³ (unsigned -1 = 4294967295)
-		if (spacing > 50) spacing = 50;
+			// wypisz nieznan¹ szerokoœæ
+			std::cout << "[?x" << arr.size() << "]\n";
 
-
-		// utworzenie tablicy znaków dla formatu dope³nienia wartoœci
-		char* mod = new char[12];
-		// wpisanie formatu do tablicy znaków (np. "%3d, ")
-		sprintf_s(mod, 12, "%%%dd", spacing);
-
-		// dla ka¿dego elementu tablicy
-		for (auto el = arr.begin(); el != arr.end(); el++)
-		{
-			// wypisanie wartoœci elementu przy u¿yciu utworzonego wczeœniej formatu
-			printf(mod, *el);
-			if (el != arr.end() - 1) std::cout << ",";
+			// zakoñcz wykonywanie funkcji
+			return;
 		}
 
-		// zwolnienie pamiêci tablicy formatu
-		delete[] mod;
+		// je¿eli nie znaleziono ró¿nych d³ugoœci wierszy
+		// wypisz wymiary ostatniego sprawdzonego wiersza na iloœæ wierszy
+		std::cout << "[" << size << "x" << arr.size() << "]\n";
 	}
 
-	std::cout << "]\n";
+	// wypisz brak elementów
+	std::cout << "[0x" << 0 << "]\n";
 }
 
-void pro::wypisz_ciag(const std::vector<std::vector<int>>& data, unsigned spacing)
-{
-	// dla ka¿dego elementu tablicy 2-wymiarowej
-	for (auto const& arr : data)
-	{
-		// wypisz wartoœci ci¹gu 1-wymiarowego wykorzystuj¹c istniaj¹c¹ funkcjê wypisz_ci¹g
-		pro::wypisz_ciag(arr, spacing);
-	}
-}
-
-// odczytuje tablice z pliku wejsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci
 std::vector<int> pro::odczytaj_ciag_z_pliku(const char* nazwa_pliku, char delimiter)
 {
 	// otwarcie pliku do odczytu
@@ -244,7 +285,6 @@ std::vector<int> pro::odczytaj_ciag_z_pliku(const char* nazwa_pliku, char delimi
 	return arr;
 }
 
-// odczytuje tablice dwuwymiarow¹ z pliku wejsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci i tablice
 std::vector<std::vector<int>> pro::odczytaj_ciag_2d_z_pliku(const char* nazwa_pliku, char delimiter_val, char delimiter_array)
 {
 	// otwarcie pliku do odczytu
@@ -284,7 +324,7 @@ std::vector<std::vector<int>> pro::odczytaj_ciag_2d_z_pliku(const char* nazwa_pl
 	return data;
 }
 
-// zwraca parê iteratorów, na której wykonywane maj¹ byæ operacje dla tablicy 2-wymiarowej dla n-tego w¹tku przy zdefiniowanej ³¹cznej liczbie wykoszystanych w¹tków
+
 std::pair<std::vector<std::vector<int>>::const_iterator, std::vector<std::vector<int>>::const_iterator> pro::thread_bounds(const std::vector<std::vector<int>>& data, int thread_count, int thread_id)
 {
 	// odczytanie iloœci wierszy w tablicy dla operacji
