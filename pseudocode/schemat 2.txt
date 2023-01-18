@@ -1,0 +1,27 @@
+wejście:
+data			- tablica dwuwymiarowa
+
+dane:
+powtorzenia 	- tablica przechowująca powtorzenia z wszystkich iteracji
+bufor			- tablica przechowująca powtórzenia z aktualnej iteracji
+arr_i			- iterator przechodzący przez podciągi tablicy data
+it			- iterator pomocniczy
+
+algorytm:
+
+jeżeli rozmiar data == 0 albo rozmiar data[0] == 0:
+	zwróć pustą tablicę
+
+powtorzenia <- data[0]
+quicksort(powtorzenia)
+
+arr_i <- 1
+dopóki arr_i != długość tablicy data:
+	el <- 0
+	quicksort(data[arr_i])
+	it = intersection(powtorzenia, data[arr_i], &bufor)
+	if rozmiar tablicy bufor == 0:
+		zwróć pustą tablicę
+	powtórzenia <- bufor
+	arr_i <- arr_i + 1
+zwróć tablicę powtórzenia

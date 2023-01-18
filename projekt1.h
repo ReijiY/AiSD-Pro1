@@ -330,6 +330,8 @@ namespace pro
 		// weryfikacja otwarcia pliku
 		if (!ofs.good())
 		{
+			// jeżeli wartość błędu jest równa 2, to ścieżka do pliku jest niepoprawna lub nie istnieje
+			// tworzenie folderu wskazanego przez ścieżkę
 			if (errno == 2)
 			{
 				std::string fn = std::string(nazwa_pliku);

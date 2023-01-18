@@ -198,7 +198,7 @@ void pro::quicksort_three_way_iterator(std::vector<int>::iterator begin, std::ve
 
 	if (std::distance(begin, end) == 2)
 	{
-		if (*begin < *(begin + 1))
+		if (*begin > *(begin + 1))
 		{
 			std::swap(*begin, *(begin + 1));
 		}

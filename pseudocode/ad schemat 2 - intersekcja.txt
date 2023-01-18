@@ -1,0 +1,32 @@
+wejście:
+arr1			- pierwsza tablica wejściowa
+arr2			- druga tablica wejściowa
+res			- wskaźnik na pustą tablicę o rozmiarze przynajmniej min(długość arr1, długość arr2), 
+				w której znajdują się zwracane wartości
+
+dane:
+res_i 		- licznik elementów w zwracanej tablicy
+first1		- iterator przechodzący przez tablicę arr1
+last1			- zmienna przechowująca długość tablicy arr1
+first2		- iterator przechodzący przez tabicę arr2
+last2			- zmienna przechowująca długosć tablicy arr2
+
+algorytm:
+
+res_i <- 0
+first1 <- 0
+last1 <- długość tablicy arr1
+first2 <- 0
+last2 <- długość tablicy arr2
+
+dopóki first1 != last1:
+	jeżeli arr1[first1] < arr2[first2]:
+		first1 <- first1 + 1
+	w przeciwnym wypadku, jeżeli arr2[first2] < arr1[first1]:
+		first2 <- first2 + 1
+	w przeciwnym wypadku:
+		res[res_i] <- arr1[first1]
+		res_i <- res_i + 1
+		first1 <- first1 + 1
+		first2 <- first2 + 1
+zwróć wartość licznika res_i

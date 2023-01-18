@@ -1,0 +1,43 @@
+wejście:
+data 			- tablica dwuwymiarowa
+
+dane:
+powtorzenia 	- tablica przechowująca powtorzenia z wszystkich iteracji
+bufor			- tablica przechowująca powtórzenia z aktualnej iteracji
+empty_marker	- liczba oznaczająca wartość usuniętą z tablicy
+arr_i			- iterator przechodzący przez podciągi tablicy data
+el			- iterator przechodzący przez elementy podciągu pod indeksem data
+it			- iterator pomocniczy
+
+algorytm:
+
+jeżeli rozmiar data == 0 albo rozmiar data[0] == 0:
+	zwróć pustą tablicę
+
+powtorzenia <- data[0]
+it <- 0
+empty_marker <- powtorzenia[0]
+
+dopóki it < od rozmiaru tablicy powtorzenia:
+	jeżeli powtorzenia[it] < empty_marker:
+		empty_marker <- powtorzenia[it]
+	it <- it + 1
+empty_marker <- empty_marker - 1
+
+arr_i <- 1
+dopóki arr_i != długość tablicy data:
+	el <- 0
+	dopóki el != długość tablicy data[arr_i]:
+		it <- wyszukiwanie_liniowe(powtorzenia, data[arr_i][el])
+		jeżeli it != długość tablicy powtorzenia:
+			bufor <- bufor, data[arr_i][el]
+			powtorzenia[it] = empty_marker
+		el <- el + 1
+	jeżeli długość tablicy bufor == 0:
+		zwróć pustą tablicę
+	powtorzenia <- bufor
+	bufor <- []
+	arr_i <- arr_i + 1
+zwróć tablicę powtorzenia
+
+

@@ -11,9 +11,11 @@
 #include <thread>
 #include <future>
 
+#include <math.h>
+
 
 // funkcja wywołująca testy czasów na obu algorytmach i zapisująca wyniki do pliku
-std::vector<std::vector<double>> testy(int ilosc_testow, int max_w, int max_h, int ilosc_watkow);
+std::vector<std::vector<double>> testy(int ilosc_testow, int start_w, int start_h, int multiplier, int ilosc_watkow);
 
 // algorytm - realizacja naiwna
 std::vector<int> znajdz_powtorzenia_a(const std::vector<std::vector<int>>::const_iterator& data_first, const std::vector<std::vector<int>>::const_iterator& data_last);
@@ -29,7 +31,9 @@ int main()
 {
     pro::init();
 
-    auto wyniki = testy(10, 50000, 50, 4);
+    // 11 release
+    // 8 debug
+    auto wyniki = testy(8, 800, 80, 2, 4);
 
     try
     {
@@ -46,7 +50,7 @@ int main()
 }
 
 // funkcja wywołująca testy czasów na obu algorytmach
-std::vector<std::vector<double>> testy(int ilosc_testow, int max_w, int max_h, int ilosc_watkow)
+std::vector<std::vector<double>> testy(int ilosc_testow, int start_w, int start_h, int multiplier, int ilosc_watkow)
 {
     std::chrono::high_resolution_clock::time_point start, stop;
     std::chrono::duration<double> timediff;
@@ -55,15 +59,22 @@ std::vector<std::vector<double>> testy(int ilosc_testow, int max_w, int max_h, i
 
     std::vector<int> wynik_obliczen;
 
+    int width, height;
+
     for (int nr_testu = 0; nr_testu < ilosc_testow; nr_testu++)
     {
+
+        width = std::round((double)start_w * std::pow(std::sqrt(multiplier), nr_testu));
+        height = std::round((double)start_h * std::pow(std::sqrt(multiplier), nr_testu));
+
         std::vector<double> zebrane_dane;
 
-        int width = (double)(nr_testu + 1.0) / (double)ilosc_testow * max_w;
-        int height = (double)(nr_testu + 1.0) / (double)ilosc_testow * max_h;
+        //int width = (double)(nr_testu + 1.0) / (double)ilosc_testow * max_w;
+        //int height = (double)(nr_testu + 1.0) / (double)ilosc_testow * max_h;
 
         zebrane_dane.push_back(width*height);
 
+        std::cout << "Test nr: " << nr_testu + 1 << "\n";
         std::cout << "Generowanie tablicy o wymiarach " << width << " na " << height << "\n";
 
         auto data = pro::generuj_losowy_ciag_2d(0, 9, width, height);
@@ -99,6 +110,7 @@ std::vector<std::vector<double>> testy(int ilosc_testow, int max_w, int max_h, i
 
 
         wyniki.push_back(zebrane_dane);
+
     }
 
     return wyniki;
@@ -126,7 +138,7 @@ std::vector<int> znajdz_powtorzenia_a(const std::vector<std::vector<int>>::const
     // przypisanie do pustego znacznika najmniejszej wartości z tablicy powtórzeń
     for (it = powtorzenia.begin(); it != powtorzenia.end(); it++)
         if (*it < empty_marker) empty_marker = *it;
-  
+
     // w przypadku gdy najmniejszy element w tablicy jest minimalną wartością możliwą do zapisania w zmiennej typu int
     if (empty_marker == INT_MIN)
         // zmniejszanie wartości pustego markera dopóki element z taką samą wartością znajduje się w tablicy powtórzeń
@@ -215,6 +227,7 @@ std::vector<int> znajdz_powtorzenia_b(const std::vector<std::vector<int>>::const
 template<class T>
 std::vector<int> znajdz_powtorzenia_multithread(const std::vector<std::vector<int>>& data, int thread_count, T sorting_algorithm, bool silent)
 {
+    if(thread_count <= 0) return sorting_algorithm(data.begin(), data.end());
     std::vector<std::future<std::vector<int>>> threads;
 
     if (!silent) std::cout << "Uruchamianie watkow: \n";

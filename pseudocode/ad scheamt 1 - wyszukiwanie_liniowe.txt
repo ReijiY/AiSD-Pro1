@@ -1,0 +1,16 @@
+wejście:
+data 			- tablica danych wejściowych
+val			- wartość szukana
+
+dane:
+it			- iterator przechodzący przez wszystkie elementy tablicy data
+
+
+algorytm:
+
+it <- 0
+dopóki data[it] != rozmiar tablicy data:
+	jeżeli data[it] == val:
+		zwróć wartość iteratora it
+	it <- it + 1
+zwróć wartość iteratora it

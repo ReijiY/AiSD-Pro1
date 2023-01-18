@@ -1,0 +1,59 @@
+Algorytm 1 - quicksort
+
+wejście:
+data			- wskaźnik na tablicę danych do posortowania
+
+dane:
+a			- iterator wskazujący na początek posortowanego zakresu
+b			- iterator wskazujący na pierwszy element za posortowanym zakresem
+
+algorytm:
+
+jeżeli rozmiar tablicy data <= 1:
+	zakończ działanie algorytmu
+
+jeżeli rozmiar tablicy data == 2:
+	jeżeli data[0] > data[1]:
+		data[0] <-> data[1]
+	zakończ działanie algorytmu
+
+a, b <- quicksort_partition(data)
+
+quicksort(podciąg tablicy data w zakresie od 0 do a)
+quicksort(podciąg tablicy data w zakresie od b do rozmiaru tablicy data)
+
+zakończ działanie algorytmu
+
+
+
+Algorytm 2 - quicksort_partition
+
+wejście:
+data			- wskaźnik na fragment tablicy do posortowania
+
+dane:
+mid			- iterator wskazujący na porównywany element
+start			- iterator wskazujący na początek nieposortowanego podciągu
+end			- iterator wskazujący na koniec nieposortowanego podciągu
+pivot			- wartość, z którą porównywane są elementy do sortowania
+
+algorytm:
+
+mid <- 0
+start <- 0
+end <- długość tablicy data
+pivot <- data[end - 1]
+
+dopóki mid != end:
+	jeżeli data[mid] < pivot:
+		data[start] <-> data[mid]
+		start <- start + 1
+		mid <- mid + 1
+	w przeciwnym wypadku, jeżeli data[mid] > pivot:
+		data[mid] <-> data[end - 1]
+		end <- end - 1
+	w przeciwnym wypadku:
+		mid <- mid + 1
+
+zakończ działanie algorytmu
+		

@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1674014425 source:c:\projects\visual studio\aisd-pro1\projekt1.cpp
+
+1674020560 source:c:\projects\visual studio\aisd-pro1\main.cpp
+	<Windows.h>
+	<iostream>
+	"projekt1.h"
+	<chrono>
+	<thread>
+	<future>
+	<math.h>
+
+1674008121 c:\projects\visual studio\aisd-pro1\projekt1.h
+	<Windows.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<algorithm>
+	<time.h>
+	<vector>
+	<chrono>
+	<deque>
+
