@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * \file   projekt1.h
  * \brief
  *
@@ -8,6 +8,8 @@
 
 #ifndef __PROJEKT_1_AISD__
 #define __PROJEKT_1_AISD__
+
+#include <Windows.h>
 
 #include <iostream>
 #include <fstream>
@@ -23,7 +25,7 @@
 
 #include <deque>
 
-#define PRO_FILE_VALUE_DELIMITER ','
+#define PRO_FILE_VALUE_DELIMITER ' '
 #define PRO_FILE_ARRAY_DELIMITER '\n'
 
 namespace pro
@@ -31,15 +33,15 @@ namespace pro
 	/* ---===---   FUNCTION DECLARATIONS   ---===--- */
 
 	/**
-	 * @brief Inicjalizuje bibliotekê pomocnicz¹.
+	 * @brief Inicjalizuje bibliotekÄ™ pomocniczÄ….
 	 */
 	void init();
 
 	/**
-	 * @brief Generuje losow¹ liczbê z przedzia³u [min, max].
+	 * @brief Generuje losowÄ… liczbÄ™ z przedziaÅ‚u [min, max].
 	 * 
-	 * @param min Minimalna wartoœæ liczby
-	 * @param max Maksymalna wartosæ liczby
+	 * @param min Minimalna wartoÅ›Ä‡ liczby
+	 * @param max Maksymalna wartosÄ‡ liczby
 	 * 
 	 * @return wygenerowana liczba
 	 */
@@ -47,25 +49,25 @@ namespace pro
 
 	// 
 	/**
-	 * @brief Generuje losowy ciag o podanej d³ugoœci z wartoœciami z podanego przedzia³u.
+	 * @brief Generuje losowy ciag o podanej dÅ‚ugoÅ›ci z wartoÅ›ciami z podanego przedziaÅ‚u.
 	 * 
-	 * @param min Minimalna wartoœæ elementu w ci¹gu
-	 * @param max Maksymalna wartosæ elementu w ci¹gu
-	 * @param width Iloœæ elementów w ci¹gu
+	 * @param min Minimalna wartoÅ›Ä‡ elementu w ciÄ…gu
+	 * @param max Maksymalna wartosÄ‡ elementu w ciÄ…gu
+	 * @param width IloÅ›Ä‡ elementÃ³w w ciÄ…gu
 	 * 
-	 * @return wygenerowany ci¹g
+	 * @return wygenerowany ciÄ…g
 	 */
 	std::vector<int> generuj_losowy_ciag(int min, int max, int width);
 
 	/**
-	 * @brief Generuje losowy dwuwymiarowy ciag o podanych wymiarach z wartoœciami z podanego przedzia³u.
+	 * @brief Generuje losowy dwuwymiarowy ciag o podanych wymiarach z wartoÅ›ciami z podanego przedziaÅ‚u.
 	 * 
-	 * @param min Minimalna wartoœæ elementu w ci¹gu
-	 * @param max Maksymalna wartosæ elementu w ci¹gu
-	 * @param width Iloœæ kolumn w ci¹gu
-	 * @param height Iloœæ wierszy ci¹gu
+	 * @param min Minimalna wartoÅ›Ä‡ elementu w ciÄ…gu
+	 * @param max Maksymalna wartosÄ‡ elementu w ciÄ…gu
+	 * @param width IloÅ›Ä‡ kolumn w ciÄ…gu
+	 * @param height IloÅ›Ä‡ wierszy ciÄ…gu
 	 * 
-	 * @return wygenerowany ci¹g
+	 * @return wygenerowany ciÄ…g
 	 */
 	std::vector<std::vector<int>> generuj_losowy_ciag_2d(int min, int max, int width, int height);
 
@@ -76,56 +78,75 @@ namespace pro
 	 * np. f(2, 6, 2) -> [2, 4, 6]
 	 * @endcode
 	 * 
-	 * @param start Pocz¹tkowa wartoœæ iteratora
-	 * @param end Maksymalna wartoœæ iteratora (w³¹cznie)
-	 * @param step Krok o jaki zwiêkszany jest iterator
+	 * @param start PoczÄ…tkowa wartoÅ›Ä‡ iteratora
+	 * @param end Maksymalna wartoÅ›Ä‡ iteratora (wÅ‚Ä…cznie)
+	 * @param step Krok o jaki zwiÄ™kszany jest iterator
 	 */
 	std::vector<int> generuj_ciag_z_zakresu(int start, int end, int step = 1);
 
 	/**
 	 * @brief Funkcja pomocnicza sortowania quicksort.
 	 * 
-	 * Dzieli ci¹g danych na dwie czêœci przenosz¹c elementy mniejsze lub równe pierwszej wartoœci na jej lew¹ stronê a pozosta³e na jej praw¹ stronê.
+	 * Dzieli ciÄ…g danych na dwie czÄ™Å›ci przenoszÄ…c elementy mniejsze lub rÃ³wne pierwszej wartoÅ›ci na jej lewÄ… stronÄ™ a pozostaÅ‚e na jej prawÄ… stronÄ™.
 	 * 
 	 * @param begin 
 	 * @param end 
 	 * 
-	 * @return Iterator wskazuj¹cy na wartoœæ oddzielaj¹c¹ oba ci¹gi
+	 * @return Iterator wskazujÄ…cy na wartoÅ›Ä‡ oddzielajÄ…cÄ… oba ciÄ…gi
 	*/
 	std::vector<int>::iterator quicksort_iterator_partition(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-	
+
 	/**
-	 * @brief Sortowanie metod¹ quicksort na podanym przedziale.
+	 * @brief Sortowanie metodÄ… quicksort na podanym przedziale.
 	 * 
-	 * @param begin Iterator wskazuj¹cy na pocz¹tek przedzia³u
-	 * @param end Iterator wskazuj¹cy na koniec przedzia³u
+	 * @param begin Iterator wskazujÄ…cy na poczÄ…tek przedziaÅ‚u
+	 * @param end Iterator wskazujÄ…cy na koniec przedziaÅ‚u
 	*/
 	void quicksort_iterator(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-	
+
 	/**
-	 * @brief Przeprowadza wyszukiwanie liniowe w wartoœciach tablicy.
+	 * @brief Funkcja pomocnicza sortowania quicksort wykorzystujÄ…ca usprawnienie dla ciÄ…gÃ³w z czÄ™sto powtarzajÄ…cymi siÄ™ wartoÅ›ciami.
+	 *
+	 * Dzieli ciÄ…g danych na trzy czÄ™Å›ci przenoszÄ…c elementy mniejsze pierwszej wartoÅ›ci na jej lewÄ… stronÄ™, wiÄ™ksze od niej na jej prawÄ… stronÄ™ a rÃ³wne jej na Å›rodek.
+	 *
+	 * @param begin
+	 * @param end
+	 *
+	 * @return Para iteratorÃ³w wskazujÄ…cych odpowiednio na koniec i poczÄ…tek przedziaÅ‚Ã³w oddzielonych ciÄ…giem zÅ‚oÅ¼onym z wartoÅ›ci rÃ³wnych wybranej wartoÅ›ci pivot.
+	*/
+	std::pair<std::vector<int>::iterator, std::vector<int>::iterator> quicksort_iterator_three_way_partition(std::vector<int>::iterator start, std::vector<int>::iterator end);
+
+	/**
+		* @brief Sortowanie metodÄ… quicksort na podanym przedziale.
+		*
+		* @param begin Iterator wskazujÄ…cy na poczÄ…tek przedziaÅ‚u
+		* @param end Iterator wskazujÄ…cy na koniec przedziaÅ‚u
+	*/
+	void quicksort_three_way_iterator(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+	/**
+	 * @brief Przeprowadza wyszukiwanie liniowe w wartoÅ›ciach tablicy.
 	 * 
-	 * @param arr Tablica, na której wykonywane jest wyszukiwanie
-	 * @param val Wartoœæ szukana w tablicy
+	 * @param arr Tablica, na ktÃ³rej wykonywane jest wyszukiwanie
+	 * @param val WartoÅ›Ä‡ szukana w tablicy
 	 * 
-	 * @return Iterator wskazuj¹cy na znaleziony element lub na koniec przedzia³u
+	 * @return Iterator wskazujÄ…cy na znaleziony element lub na koniec przedziaÅ‚u
 	*/
 	std::vector<int>::iterator linear_search_iterator(std::vector<int>& arr, int val);
 
-	// wyszukuje wspólne elementy tablic arr1 i arr2 poprzez intersekcje oraz przepisuje je do tablicy res
-	// zwraca iterator tablicy res wskazuj¹cy na ostatni przypisany element
+	// wyszukuje wspÃ³lne elementy tablic arr1 i arr2 poprzez intersekcje oraz przepisuje je do tablicy res
+	// zwraca iterator tablicy res wskazujÄ…cy na ostatni przypisany element
 	
 	/**
-	 * @brief Wyszukuje wspólne elementy dwóch tablic.
+	 * @brief Wyszukuje wspÃ³lne elementy dwÃ³ch tablic.
 	 * 
-	 * Funkcja wykonuje wyszukiwanie wspólnych elementów poprzez skrzy¿owanie ze sob¹ dwóch tablic.
-	 * Tablice wejœciowe musz¹ byæ posortowane rosn¹co.
+	 * Funkcja wykonuje wyszukiwanie wspÃ³lnych elementÃ³w poprzez skrzyÅ¼owanie ze sobÄ… dwÃ³ch tablic.
+	 * Tablice wejÅ›ciowe muszÄ… byÄ‡ posortowane rosnÄ…co.
 	 * 
 	 * @param arr1 Pierwsza tablica
 	 * @param arr2 Druga tablica
-	 * @param res Iterator wskazuj¹cy na pierwszy element tablicy o rozmiarze przynajmniej min(rozmiar arr1, rozmiar arr2)
+	 * @param res Iterator wskazujÄ…cy na pierwszy element tablicy o rozmiarze przynajmniej min(rozmiar arr1, rozmiar arr2)
 	 * 
-	 * @return Iterator wskazuj¹cy na element za ostatnim wpisanym elementem
+	 * @return Iterator wskazujÄ…cy na element za ostatnim wpisanym elementem
 	*/
 	std::vector<int>::iterator set_intersection(const std::vector<int>& arr1, const std::vector<int>& arr2, std::vector<int>::iterator res);
 
@@ -144,34 +165,34 @@ namespace pro
 	void opisz_ciag(const std::vector<std::vector<int>>& arr);
 
 	/**
-	 * @brief Odczytuje ci¹g z pliku wejœciowego.
+	 * @brief Odczytuje ciÄ…g z pliku wejÅ›ciowego.
 	 * 
-	 * @param nazwa_pliku Œcie¿ka do pliku
-	 * @param delimiter Znak oddzielaj¹cy wartoœci w pliku
+	 * @param nazwa_pliku Å›cieÅ¼ka do pliku
+	 * @param delimiter Znak oddzielajÄ…cy wartoÅ›ci w pliku
 	 * 
-	 * @return Ci¹g odczytany z pliku
+	 * @return CiÄ…g odczytany z pliku
 	*/
 	std::vector<int> odczytaj_ciag_z_pliku(const char* nazwa_pliku, char delimiter = PRO_FILE_VALUE_DELIMITER);
 
 	/**
-	 * @brief Odczytuje dwuwymiarow¹ tablicê z pliku wejœciowego.
+	 * @brief Odczytuje dwuwymiarowÄ… tablicÄ™ z pliku wejÅ›ciowego.
 	 * 
-	 * @param nazwa_pliku Œcie¿ka do pliku
-	 * @param delimiter_val Znak oddzielaj¹cy wartoœci wiersza w pliku
-	 * @param delimiter_array Znak oddzielaj¹cy kolumny w pliku
+	 * @param nazwa_pliku Å›cieÅ¼ka do pliku
+	 * @param delimiter_val Znak oddzielajÄ…cy wartoÅ›ci wiersza w pliku
+	 * @param delimiter_array Znak oddzielajÄ…cy kolumny w pliku
 	 * 
 	 * @return Dwuwymiarowa tablica odczytany z pliku
 	*/
 	std::vector<std::vector<int>> odczytaj_ciag_2d_z_pliku(const char* nazwa_pliku, char delimiter_val = PRO_FILE_VALUE_DELIMITER, char delimiter_array = PRO_FILE_ARRAY_DELIMITER);
 
 	/**
-	 * @brief Oblicza zakres danych, na których maj¹ byæ wykonane operacje dla podanego w¹tku.
+	 * @brief Oblicza zakres danych, na ktÃ³rych majÄ… byÄ‡ wykonane operacje dla podanego wÄ…tku.
 	 * 
 	 * @param data Dane do podzielenia
-	 * @param thread_count £¹czna iloœæ w¹tków
-	 * @param thread_id Numer w¹tku, dla którego obliczany jest zakres
+	 * @param thread_count Â£Ä…czna iloÅ›Ä‡ wÄ…tkÃ³w
+	 * @param thread_id Numer wÄ…tku, dla ktÃ³rego obliczany jest zakres
 	 * 
-	 * @return Para iteratorów wskazuj¹cych na pocz¹tek i koniec wyznaczonego zakresu danych
+	 * @return Para iteratorÃ³w wskazujÄ…cych na poczÄ…tek i koniec wyznaczonego zakresu danych
 	*/
 	std::pair<std::vector<std::vector<int>>::const_iterator, std::vector<std::vector<int>>::const_iterator> 
 		thread_bounds(const std::vector<std::vector<int>>& data, int thread_count, int thread_id);
@@ -180,44 +201,44 @@ namespace pro
 	/* ---===---   TEMPLATE FUNCTION DECLARATIONS   ---===--- */
 
 	/**
-	 * @brief Wypisuje zawartoœæ tablicy na ekranie.
+	 * @brief Wypisuje zawartoÅ›Ä‡ tablicy na ekranie.
 	 * 
 	 * @tparam T Rodzaj danych przechowywanych w tablicy
-	 * @param arr Tablica do wyœwietlenia
-	 * @param spacing Dope³nienie ka¿dej komórki danych znakami bia³ymi do podanej iloœci znaków
+	 * @param arr Tablica do wyÅ›wietlenia
+	 * @param spacing DopeÅ‚nienie kaÅ¼dej komÃ³rki danych znakami biaÅ‚ymi do podanej iloÅ›ci znakÃ³w
 	*/
 	template<class T>
 	void wypisz_ciag(const std::vector<T>& arr, unsigned spacing = 0);
 
 	/**
-	 * @brief Wypisuje zawartoœæ tablicy dwuwymiarowej na ekranie.
+	 * @brief Wypisuje zawartoÅ›Ä‡ tablicy dwuwymiarowej na ekranie.
 	 * 
 	 * @tparam T Rodzaj danych przechowywanych w tablicy
-	 * @param data Tablica do wyœwietlenia
-	 * @param spacing Dope³nienie ka¿dej komórki danych znakami bia³ymi do podanej iloœci znaków
+	 * @param data Tablica do wyÅ›wietlenia
+	 * @param spacing DopeÅ‚nienie kaÅ¼dej komÃ³rki danych znakami biaÅ‚ymi do podanej iloÅ›ci znakÃ³w
 	*/
 	template<class T>
 	void wypisz_ciag(const std::vector<std::vector<T>>& data, unsigned spacing = 0);
 
 	/**
-	 * @brief Zapisuje ci¹g do pliku wyjœciowego.
+	 * @brief Zapisuje ciÄ…g do pliku wyjÅ›ciowego.
 	 * 
-	 * @tparam T Rodzaj danych przechowywanych w ci¹gu
-	 * @param nazwa_pliku Œcie¿ka do pliku
-	 * @param data Ci¹g do zapisania
-	 * @param delimiter Znak oddzielaj¹cy wartoœci w pliku
+	 * @tparam T Rodzaj danych przechowywanych w ciÄ…gu
+	 * @param nazwa_pliku Å›cieÅ¼ka do pliku
+	 * @param data CiÄ…g do zapisania
+	 * @param delimiter Znak oddzielajÄ…cy wartoÅ›ci w pliku
 	*/
 	template<class T>
 	void zapisz_ciag_do_pliku(const char* nazwa_pliku, const std::vector<T>& data, char delimiter = PRO_FILE_VALUE_DELIMITER);
 
 	/**
-	 * @brief Zapisuje tablilcê dwuwymiarow¹ do pliku wyjœciowego.
+	 * @brief Zapisuje tablilcÄ™ dwuwymiarowÄ… do pliku wyjÅ›ciowego.
 	 * 
 	 * @tparam T Rodzaj danych przechowywanych w tablicy
-	 * @param nazwa_pliku Œcie¿ka do pliku
+	 * @param nazwa_pliku Å›cieÅ¼ka do pliku
 	 * @param data Tablica do zapisania
-	 * @param delimiter_val Znak oddzielaj¹cy wartoœci wiersza w pliku
-	 * @param delimiter_array Znak oddzielaj¹cy kolumny w pliku
+	 * @param delimiter_val Znak oddzielajÄ…cy wartoÅ›ci wiersza w pliku
+	 * @param delimiter_array Znak oddzielajÄ…cy kolumny w pliku
 	*/
 	template<class T>
 	void zapisz_ciag_2d_do_pliku(const char* nazwa_pliku, const std::vector<std::vector<T>>& data, char delimiter_val = PRO_FILE_VALUE_DELIMITER, char delimiter_array = PRO_FILE_ARRAY_DELIMITER);
@@ -231,39 +252,39 @@ namespace pro
 	{
 		std::cout << "[";
 
-		// je¿eli przekazana zosta³a domyœlna d³ugoœæ dope³nienia
+		// jeÅ¼eli przekazana zostaÅ‚a domyÅ›lna dÅ‚ugoÅ›Ä‡ dopeÅ‚nienia
 		if (spacing == 0)
 		{
-			// dla ka¿dego elementu tablicy
+			// dla kaÅ¼dego elementu tablicy
 			for (auto el = arr.begin(); el != arr.end(); el++)
 			{
-				// wypisanie wartoœci elementu
+				// wypisanie wartoÅ›ci elementu
 				std::cout << *el;
-				// dla wartoœci innych ni¿ ostatnia wypisz znak ','
+				// dla wartoÅ›ci innych niÅ¼ ostatnia wypisz znak ','
 				if (el != arr.end() - 1) std::cout << ",";
 			}
 		}
 		// w przeciwnym wypadku
 		else
 		{
-			// zabezpieczenie przed przypadkowym przepe³nieniem w dó³ (unsigned -1 = 4294967295)
+			// zabezpieczenie przed przypadkowym przepeÅ‚nieniem w dÃ³Å‚ (unsigned -1 = 4294967295)
 			if (spacing > 50) spacing = 50;
 
 
-			// utworzenie tablicy znaków dla formatu dope³nienia wartoœci
+			// utworzenie tablicy znakÃ³w dla formatu dopeÅ‚nienia wartoÅ›ci
 			char* mod = new char[12];
-			// wpisanie formatu do tablicy znaków (np. "%3d, ")
+			// wpisanie formatu do tablicy znakÃ³w (np. "%3d, ")
 			sprintf_s(mod, 12, "%%%dd", spacing);
 
-			// dla ka¿dego elementu tablicy
+			// dla kaÅ¼dego elementu tablicy
 			for (auto el = arr.begin(); el != arr.end(); el++)
 			{
-				// wypisanie wartoœci elementu przy u¿yciu utworzonego wczeœniej formatu
+				// wypisanie wartoÅ›ci elementu przy uÅ¼yciu utworzonego wczeÅ›niej formatu
 				printf(mod, *el);
 				if (el != arr.end() - 1) std::cout << ",";
 			}
 
-			// zwolnienie pamiêci tablicy formatu
+			// zwolnienie pamiÄ™ci tablicy formatu
 			delete[] mod;
 		}
 
@@ -273,15 +294,15 @@ namespace pro
 	template<class T>
 	void wypisz_ciag(const std::vector<std::vector<T>>& data, unsigned spacing)
 	{
-		// dla ka¿dego elementu tablicy 2-wymiarowej
+		// dla kaÅ¼dego elementu tablicy 2-wymiarowej
 		for (auto const& arr : data)
 		{
-			// wypisz wartoœci ci¹gu 1-wymiarowego wykorzystuj¹c istniaj¹c¹ funkcjê wypisz_ci¹g
+			// wypisz wartoÅ›ci ciÄ…gu 1-wymiarowego wykorzystujÄ…c istniajÄ…cÄ… funkcjÄ™ wypisz_ciÄ…g
 			pro::wypisz_ciag(arr, spacing);
 		}
 	}
 
-	// zapisuje tablice do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci
+	// zapisuje tablice do pliku wyjsciowego z opcjonalnÄ… specyfikacjÄ… znaku oddzielajÄ…cego waroÅ›ci
 	template<class T>
 	void zapisz_ciag_do_pliku(const char* nazwa_pliku, const std::vector<T>& data, char delimiter)
 	{
@@ -290,16 +311,16 @@ namespace pro
 
 		// weryfikacja otwarcia pliku
 		if (!ofs.good())
-			// b³¹d przy próbie otwarcia pliku
+			// bÅ‚Ä…d przy prÃ³bie otwarcia pliku
 			throw std::string("Nie udalo sie otworzyc pliku ") + nazwa_pliku + " do zapisu!";
 
-		// dla ka¿dego elementu tablicy
+		// dla kaÅ¼dego elementu tablicy
 		for (const auto& el : data)
-			// wpisane wartoœci do pliku razem ze znakiem koñca wartoœci
+			// wpisane wartoÅ›ci do pliku razem ze znakiem koÅ„ca wartoÅ›ci
 			ofs << el << delimiter;
 	}
 
-	// zapisuje tablice dwuwymiarow¹ do pliku wyjsciowego z opcjonaln¹ specyfikacj¹ znaku oddzielaj¹cego waroœci i tablice
+	// zapisuje tablice dwuwymiarowÄ… do pliku wyjsciowego z opcjonalnÄ… specyfikacjÄ… znaku oddzielajÄ…cego waroÅ›ci i tablice
 	template<class T>
 	void zapisz_ciag_2d_do_pliku(const char* nazwa_pliku, const std::vector<std::vector<T>>& data, char delimiter_val, char delimiter_array)
 	{
@@ -308,20 +329,40 @@ namespace pro
 
 		// weryfikacja otwarcia pliku
 		if (!ofs.good())
-			// b³¹d przy próbie otwarcia pliku
-			throw std::string("Nie udalo sie otworzyc pliku ") + nazwa_pliku + " do zapisu!";
+		{
+			if (errno == 2)
+			{
+				std::string fn = std::string(nazwa_pliku);
+				size_t pos = fn.rfind("/");
+				if (pos == std::string::npos)
+					pos = fn.rfind("\\");
+				
+				std::string cmd = std::string("mkdir ");
+				if (pos == std::string::npos) cmd += std::string(nazwa_pliku);
+				else cmd += std::string(nazwa_pliku).substr(0, pos);
 
-		// dla ka¿dego podci¹gu
+				std::cout << "Executing \"" << cmd << "\"\n";
+				system(cmd.c_str());
+
+				ofs.open(nazwa_pliku, std::ios::out);
+			}
+			
+			if(!ofs.good())
+				// bÅ‚Ä…d przy prÃ³bie otwarcia pliku
+				throw std::string("Nie udalo sie otworzyc pliku ") + nazwa_pliku + " do zapisu! Kod bledu: " + std::to_string(errno);
+		}
+			
+		// dla kaÅ¼dego podciÄ…gu
 		for (const auto& arr : data)
 		{
-			//dla ka¿dego elementu tablicy
+			//dla kaÅ¼dego elementu tablicy
 			for (const auto& el : arr)
 			{
-				// wpisane wartoœci do pliku razem ze znakiem koñca wartoœci
+				// wpisane wartoÅ›ci do pliku razem ze znakiem koÅ„ca wartoÅ›ci
 				ofs << el << delimiter_val;
 			}
 
-			// wpisane znaku koñca tabeli
+			// wpisane znaku koÅ„ca tabeli
 			ofs << delimiter_array;
 		}
 

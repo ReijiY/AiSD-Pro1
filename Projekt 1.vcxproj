@@ -131,7 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Projekt 1.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="projekt1.cpp" />
   </ItemGroup>
   <ItemGroup>
