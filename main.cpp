@@ -29,11 +29,11 @@ int main()
 {
     pro::init();
 
-    auto wyniki = testy(1, 1000, 50, 4);
+    auto wyniki = testy(10, 50000, 50, 4);
 
     try
     {
-        std::string filename = "test/Testy2.txt";
+        std::string filename = "test/Testy.txt";
         pro::zapisz_ciag_2d_do_pliku(filename.c_str(), wyniki);
         std::cout << "Wyniki zapisane w pliku " << filename << "\n";
     }
@@ -71,37 +71,31 @@ std::vector<std::vector<double>> testy(int ilosc_testow, int max_w, int max_h, i
         std::cout << "Tablica wejsciowa: ";
         pro::opisz_ciag(data);
 
-        for (int i = 0; i < ilosc_testow; i++)
-        {
-            int watki = (double)(i + 1.0) / (double)ilosc_testow * ilosc_watkow;
+        std::cout << "Start A [" << ilosc_watkow << " thread(s)]:\n";
+        start = std::chrono::high_resolution_clock::now();
+        wynik_obliczen = znajdz_powtorzenia_multithread(data, ilosc_watkow, &znajdz_powtorzenia_a);
+        stop = std::chrono::high_resolution_clock::now();
 
-            std::cout << "Start A [" << watki << " thread(s)]:\n";
-            start = std::chrono::high_resolution_clock::now();
-            wynik_obliczen = znajdz_powtorzenia_multithread(data, watki, &znajdz_powtorzenia_a);
-            stop = std::chrono::high_resolution_clock::now();
+        timediff = stop - start;
 
-            timediff = stop - start;
+        zebrane_dane.push_back(timediff.count());
+        std::cout << "Czas wykonania algorytmu A: " << timediff.count() << "\n";
+        std::cout << "Ilosc wynikow: " << wynik_obliczen.size() << "\n";
 
-            zebrane_dane.push_back(timediff.count());
-            std::cout << "Czas wykonania algorytmu A: " << timediff.count() << "\n";
-            std::cout << "Ilosc wynikow: " << wynik_obliczen.size() << "\n";
+        std::cout << "Start B [" << ilosc_watkow << " thread(s)]:\n";
+        start = std::chrono::high_resolution_clock::now();
+        wynik_obliczen = znajdz_powtorzenia_multithread(data, ilosc_watkow, &znajdz_powtorzenia_b);
+        stop = std::chrono::high_resolution_clock::now();
 
-            std::cout << "Start B [" << watki << " thread(s)]:\n";
-            start = std::chrono::high_resolution_clock::now();
-            wynik_obliczen = znajdz_powtorzenia_multithread(data, watki, &znajdz_powtorzenia_b);
-            stop = std::chrono::high_resolution_clock::now();
+        timediff = stop - start;
 
-            timediff = stop - start;
+        zebrane_dane.push_back(timediff.count());
+        std::cout << "Czas wykonania algorytmu B: " << timediff.count() << "\n";
+        std::cout << "Ilosc wynikow: " << wynik_obliczen.size() << "\n";
 
-            zebrane_dane.push_back(timediff.count());
-            std::cout << "Czas wykonania algorytmu B: " << timediff.count() << "\n";
-            std::cout << "Ilosc wynikow: " << wynik_obliczen.size() << "\n";
-
-            std::cout << "<int>";
-            pro::opisz_ciag(wynik_obliczen);
-            std::cout << "\n";
-
-        }
+        std::cout << "<int>";
+        pro::opisz_ciag(wynik_obliczen);
+        std::cout << "\n";
 
 
         wyniki.push_back(zebrane_dane);
