@@ -5,181 +5,208 @@
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_PROJEKT\_1\_AISD\_\_}}
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_PROJEKT\_1\_AISD\_\_}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <sstream>}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <algorithm>}}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <chrono>}}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <chrono>}}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ PRO\_FILE\_VALUE\_DELIMITER\ ','}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ PRO\_FILE\_ARRAY\_DELIMITER\ '\(\backslash\)n'}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }pro}
-\DoxyCodeLine{00030\ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/===-\/-\/-\/\ \ \ FUNCTION\ DECLARATIONS\ \ \ -\/-\/-\/===-\/-\/-\/\ */}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ init();}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ losowa\_liczba(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max);}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ }}
-\DoxyCodeLine{00058\ \textcolor{comment}{}\ \ \ \ std::vector<int>\ generuj\_losowy\_ciag(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max,\ \textcolor{keywordtype}{int}\ width);}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00070\ \ \ \ \ std::vector<std::vector<int>>\ generuj\_losowy\_ciag\_2d(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00083\ \ \ \ \ std::vector<int>\ generuj\_ciag\_z\_zakresu(\textcolor{keywordtype}{int}\ start,\ \textcolor{keywordtype}{int}\ end,\ \textcolor{keywordtype}{int}\ step\ =\ 1);}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00095\ \ \ \ \ std::vector<int>::iterator\ quicksort\_iterator\_partition(std::vector<int>::iterator\ begin,\ std::vector<int>::iterator\ end);}
-\DoxyCodeLine{00096\ \ \ \ \ }
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ quicksort\_iterator(std::vector<int>::iterator\ begin,\ std::vector<int>::iterator\ end);}
-\DoxyCodeLine{00104\ \ \ \ \ }
-\DoxyCodeLine{00113\ \ \ \ \ std::vector<int>::iterator\ linear\_search\_iterator(std::vector<int>\&\ arr,\ \textcolor{keywordtype}{int}\ val);}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//\ wyszukuje\ wspólne\ elementy\ tablic\ arr1\ i\ arr2\ poprzez\ intersekcje\ oraz\ przepisuje\ je\ do\ tablicy\ res}}
-\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ zwraca\ iterator\ tablicy\ res\ wskazuj¹cy\ na\ ostatni\ przypisany\ element}}
-\DoxyCodeLine{00117\ \ \ \ \ }
-\DoxyCodeLine{00130\ \ \ \ \ std::vector<int>::iterator\ set\_intersection(\textcolor{keyword}{const}\ std::vector<int>\&\ arr1,\ \textcolor{keyword}{const}\ std::vector<int>\&\ arr2,\ std::vector<int>::iterator\ res);}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ opisz\_ciag(\textcolor{keyword}{const}\ std::vector<int>\&\ arr);}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{void}\ opisz\_ciag(\textcolor{keyword}{const}\ std::vector<std::vector<int>>\&\ arr);}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00154\ \ \ \ \ std::vector<int>\ odczytaj\_ciag\_z\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keywordtype}{char}\ delimiter\ =\ PRO\_FILE\_VALUE\_DELIMITER);}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00165\ \ \ \ \ std::vector<std::vector<int>>\ odczytaj\_ciag\_2d\_z\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keywordtype}{char}\ delimiter\_val\ =\ PRO\_FILE\_VALUE\_DELIMITER,\ \textcolor{keywordtype}{char}\ delimiter\_array\ =\ PRO\_FILE\_ARRAY\_DELIMITER);}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ PRO\_FILE\_VALUE\_DELIMITER\ '\ '}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ PRO\_FILE\_ARRAY\_DELIMITER\ '\(\backslash\)n'}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{namespace\ }pro}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/===-\/-\/-\/\ \ \ FUNCTION\ DECLARATIONS\ \ \ -\/-\/-\/===-\/-\/-\/\ */}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ init();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ losowa\_liczba(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00060\ \textcolor{comment}{}\ \ \ \ std::vector<int>\ generuj\_losowy\_ciag(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max,\ \textcolor{keywordtype}{int}\ width);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00072\ \ \ \ \ std::vector<std::vector<int>>\ generuj\_losowy\_ciag\_2d(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00085\ \ \ \ \ std::vector<int>\ generuj\_ciag\_z\_zakresu(\textcolor{keywordtype}{int}\ start,\ \textcolor{keywordtype}{int}\ end,\ \textcolor{keywordtype}{int}\ step\ =\ 1);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00097\ \ \ \ \ std::vector<int>::iterator\ quicksort\_iterator\_partition(std::vector<int>::iterator\ begin,\ std::vector<int>::iterator\ end);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ quicksort\_iterator(std::vector<int>::iterator\ begin,\ std::vector<int>::iterator\ end);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00117\ \ \ \ \ std::pair<std::vector<int>::iterator,\ std::vector<int>::iterator>\ quicksort\_iterator\_three\_way\_partition(std::vector<int>::iterator\ start,\ std::vector<int>::iterator\ end);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ quicksort\_three\_way\_iterator(std::vector<int>::iterator\ begin,\ std::vector<int>::iterator\ end);}
+\DoxyCodeLine{00134\ \ \ \ \ std::vector<int>::iterator\ linear\_search\_iterator(std::vector<int>\&\ arr,\ \textcolor{keywordtype}{int}\ val);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ wyszukuje\ wspÃ³lne\ elementy\ tablic\ arr1\ i\ arr2\ poprzez\ intersekcje\ oraz\ przepisuje\ je\ do\ tablicy\ res}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ zwraca\ iterator\ tablicy\ res\ wskazujÄ…cy\ na\ ostatni\ przypisany\ element}}
+\DoxyCodeLine{00138\ \ \ \ \ }
+\DoxyCodeLine{00151\ \ \ \ \ std::vector<int>::iterator\ set\_intersection(\textcolor{keyword}{const}\ std::vector<int>\&\ arr1,\ \textcolor{keyword}{const}\ std::vector<int>\&\ arr2,\ std::vector<int>::iterator\ res);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ opisz\_ciag(\textcolor{keyword}{const}\ std::vector<int>\&\ arr);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{void}\ opisz\_ciag(\textcolor{keyword}{const}\ std::vector<std::vector<int>>\&\ arr);}
 \DoxyCodeLine{00166\ }
-\DoxyCodeLine{00176\ \ \ \ \ std::pair<std::vector<std::vector<int>>::const\_iterator,\ std::vector<std::vector<int>>::const\_iterator>\ }
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ thread\_bounds(\textcolor{keyword}{const}\ std::vector<std::vector<int>>\&\ data,\ \textcolor{keywordtype}{int}\ thread\_count,\ \textcolor{keywordtype}{int}\ thread\_id);}
-\DoxyCodeLine{00178\ }
-\DoxyCodeLine{00179\ }
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/===-\/-\/-\/\ \ \ TEMPLATE\ FUNCTION\ DECLARATIONS\ \ \ -\/-\/-\/===-\/-\/-\/\ */}}
-\DoxyCodeLine{00181\ }
-\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordtype}{void}\ wypisz\_ciag(\textcolor{keyword}{const}\ std::vector<T>\&\ arr,\ \textcolor{keywordtype}{unsigned}\ spacing\ =\ 0);}
-\DoxyCodeLine{00191\ }
-\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordtype}{void}\ wypisz\_ciag(\textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ data,\ \textcolor{keywordtype}{unsigned}\ spacing\ =\ 0);}
-\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00175\ \ \ \ \ std::vector<int>\ odczytaj\_ciag\_z\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keywordtype}{char}\ delimiter\ =\ PRO\_FILE\_VALUE\_DELIMITER);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00186\ \ \ \ \ std::vector<std::vector<int>>\ odczytaj\_ciag\_2d\_z\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keywordtype}{char}\ delimiter\_val\ =\ PRO\_FILE\_VALUE\_DELIMITER,\ \textcolor{keywordtype}{char}\ delimiter\_array\ =\ PRO\_FILE\_ARRAY\_DELIMITER);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00197\ \ \ \ \ std::pair<std::vector<std::vector<int>>::const\_iterator,\ std::vector<std::vector<int>>::const\_iterator>\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ thread\_bounds(\textcolor{keyword}{const}\ std::vector<std::vector<int>>\&\ data,\ \textcolor{keywordtype}{int}\ thread\_count,\ \textcolor{keywordtype}{int}\ thread\_id);}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/===-\/-\/-\/\ \ \ TEMPLATE\ FUNCTION\ DECLARATIONS\ \ \ -\/-\/-\/===-\/-\/-\/\ */}}
+\DoxyCodeLine{00202\ }
 \DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{void}\ zapisz\_ciag\_do\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keyword}{const}\ std::vector<T>\&\ data,\ \textcolor{keywordtype}{char}\ delimiter\ =\ PRO\_FILE\_VALUE\_DELIMITER);}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{void}\ wypisz\_ciag(\textcolor{keyword}{const}\ std::vector<T>\&\ arr,\ \textcolor{keywordtype}{unsigned}\ spacing\ =\ 0);}
 \DoxyCodeLine{00212\ }
-\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keywordtype}{void}\ zapisz\_ciag\_2d\_do\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ data,\ \textcolor{keywordtype}{char}\ delimiter\_val\ =\ PRO\_FILE\_VALUE\_DELIMITER,\ \textcolor{keywordtype}{char}\ delimiter\_array\ =\ PRO\_FILE\_ARRAY\_DELIMITER);}
-\DoxyCodeLine{00224\ }
-\DoxyCodeLine{00225\ }
-\DoxyCodeLine{00226\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/===-\/-\/-\/\ \ \ TEMPLATE\ FUNCTION\ DEFINITIONS\ \ \ -\/-\/-\/===-\/-\/-\/\ */}}
-\DoxyCodeLine{00227\ }
-\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{//\ wypisuje\ tablice\ na\ ekranie}}
-\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordtype}{void}\ wypisz\_ciag(\textcolor{keyword}{const}\ std::vector<T>\&\ arr,\ \textcolor{keywordtype}{unsigned}\ spacing)}
-\DoxyCodeLine{00231\ \ \ \ \ \{}
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordtype}{void}\ wypisz\_ciag(\textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ data,\ \textcolor{keywordtype}{unsigned}\ spacing\ =\ 0);}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordtype}{void}\ zapisz\_ciag\_do\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keyword}{const}\ std::vector<T>\&\ data,\ \textcolor{keywordtype}{char}\ delimiter\ =\ PRO\_FILE\_VALUE\_DELIMITER);}
 \DoxyCodeLine{00233\ }
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ je¿eli\ przekazana\ zosta³a\ domyœlna\ d³ugoœæ dope³nienia}}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (spacing\ ==\ 0)}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ ka¿dego\ elementu\ tablicy}}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ el\ =\ arr.begin();\ el\ !=\ arr.end();\ el++)}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wypisanie\ wartoœci\ elementu}}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ *el;}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ wartoœci\ innych\ ni¿\ ostatnia\ wypisz\ znak\ ','}}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (el\ !=\ arr.end()\ -\/\ 1)\ std::cout\ <<\ \textcolor{stringliteral}{"{},"{}};}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ w\ przeciwnym\ wypadku}}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ zabezpieczenie\ przed\ przypadkowym\ przepe³nieniem\ w\ dó³ (unsigned\ -\/1\ =\ 4294967295)}}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (spacing\ >\ 50)\ spacing\ =\ 50;}
-\DoxyCodeLine{00251\ }
-\DoxyCodeLine{00252\ }
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ utworzenie\ tablicy\ znaków dla\ formatu\ dope³nienia\ wartoœci}}
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ mod\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}[12];}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wpisanie\ formatu\ do\ tablicy\ znaków (np.\ "{}\%3d,\ "{})}}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ sprintf\_s(mod,\ 12,\ \textcolor{stringliteral}{"{}\%\%\%dd"{}},\ spacing);}
-\DoxyCodeLine{00257\ }
-\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ ka¿dego\ elementu\ tablicy}}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{void}\ zapisz\_ciag\_2d\_do\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ data,\ \textcolor{keywordtype}{char}\ delimiter\_val\ =\ PRO\_FILE\_VALUE\_DELIMITER,\ \textcolor{keywordtype}{char}\ delimiter\_array\ =\ PRO\_FILE\_ARRAY\_DELIMITER);}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/===-\/-\/-\/\ \ \ TEMPLATE\ FUNCTION\ DEFINITIONS\ \ \ -\/-\/-\/===-\/-\/-\/\ */}}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{comment}{//\ wypisuje\ tablice\ na\ ekranie}}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{void}\ wypisz\_ciag(\textcolor{keyword}{const}\ std::vector<T>\&\ arr,\ \textcolor{keywordtype}{unsigned}\ spacing)}
+\DoxyCodeLine{00252\ \ \ \ \ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ jeÅ¼eli\ przekazana\ zostaÅ‚a\ domyÅ›lna\ dÅ‚ugoÅ›Ä‡\ dopeÅ‚nienia}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (spacing\ ==\ 0)}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ kaÅ¼dego\ elementu\ tablicy}}
 \DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ el\ =\ arr.begin();\ el\ !=\ arr.end();\ el++)}
 \DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wypisanie\ wartoœci\ elementu\ przy\ u¿yciu\ utworzonego\ wczeœniej\ formatu}}
-\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(mod,\ *el);}
-\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (el\ !=\ arr.end()\ -\/\ 1)\ std::cout\ <<\ \textcolor{stringliteral}{"{},"{}};}
-\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00265\ }
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ zwolnienie\ pamiêci\ tablicy\ formatu}}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ mod;}
-\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00269\ }
-\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}]\(\backslash\)n"{}};}
-\DoxyCodeLine{00271\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wypisanie\ wartoÅ›ci\ elementu}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ *el;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ wartoÅ›ci\ innych\ niÅ¼\ ostatnia\ wypisz\ znak\ ','}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (el\ !=\ arr.end()\ -\/\ 1)\ std::cout\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ w\ przeciwnym\ wypadku}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ zabezpieczenie\ przed\ przypadkowym\ przepeÅ‚nieniem\ w\ dÃ³Å‚\ (unsigned\ -\/1\ =\ 4294967295)}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (spacing\ >\ 50)\ spacing\ =\ 50;}
 \DoxyCodeLine{00272\ }
-\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordtype}{void}\ wypisz\_ciag(\textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ data,\ \textcolor{keywordtype}{unsigned}\ spacing)}
-\DoxyCodeLine{00275\ \ \ \ \ \{}
-\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ ka¿dego\ elementu\ tablicy\ 2-\/wymiarowej}}
-\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ arr\ :\ data)}
-\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wypisz\ wartoœci\ ci¹gu\ 1-\/wymiarowego\ wykorzystuj¹c\ istniaj¹c¹\ funkcjê wypisz\_ci¹g}}
-\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ pro::wypisz\_ciag(arr,\ spacing);}
-\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00282\ \ \ \ \ \}}
-\DoxyCodeLine{00283\ }
-\DoxyCodeLine{00284\ \ \ \ \ \textcolor{comment}{//\ zapisuje\ tablice\ do\ pliku\ wyjsciowego\ z\ opcjonaln¹\ specyfikacj¹\ znaku\ oddzielaj¹cego\ waroœci}}
-\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keywordtype}{void}\ zapisz\_ciag\_do\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keyword}{const}\ std::vector<T>\&\ data,\ \textcolor{keywordtype}{char}\ delimiter)}
-\DoxyCodeLine{00287\ \ \ \ \ \{}
-\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ otwarcie\ pliku\ do\ zapisu}}
-\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ std::fstream\ ofs(nazwa\_pliku,\ std::ios::out);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ utworzenie\ tablicy\ znakÃ³w\ dla\ formatu\ dopeÅ‚nienia\ wartoÅ›ci}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ mod\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}[12];}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wpisanie\ formatu\ do\ tablicy\ znakÃ³w\ (np.\ "{}\%3d,\ "{})}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ sprintf\_s(mod,\ 12,\ \textcolor{stringliteral}{"{}\%\%\%dd"{}},\ spacing);}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ kaÅ¼dego\ elementu\ tablicy}}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ el\ =\ arr.begin();\ el\ !=\ arr.end();\ el++)}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wypisanie\ wartoÅ›ci\ elementu\ przy\ uÅ¼yciu\ utworzonego\ wczeÅ›niej\ formatu}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(mod,\ *el);}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (el\ !=\ arr.end()\ -\/\ 1)\ std::cout\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ zwolnienie\ pamiÄ™ci\ tablicy\ formatu}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ mod;}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00290\ }
-\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ weryfikacja\ otwarcia\ pliku}}
-\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ofs.good())}
-\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ b³¹d\ przy\ próbie\ otwarcia\ pliku}}
-\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::string(\textcolor{stringliteral}{"{}Nie\ udalo\ sie\ otworzyc\ pliku\ "{}})\ +\ nazwa\_pliku\ +\ \textcolor{stringliteral}{"{}\ do\ zapisu!"{}};}
-\DoxyCodeLine{00295\ }
-\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ ka¿dego\ elementu\ tablicy}}
-\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ data)}
-\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wpisane\ wartoœci\ do\ pliku\ razem\ ze\ znakiem\ koñca wartoœci}}
-\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ ofs\ <<\ el\ <<\ delimiter;}
-\DoxyCodeLine{00300\ \ \ \ \ \}}
-\DoxyCodeLine{00301\ }
-\DoxyCodeLine{00302\ \ \ \ \ \textcolor{comment}{//\ zapisuje\ tablice\ dwuwymiarow¹\ do\ pliku\ wyjsciowego\ z\ opcjonaln¹\ specyfikacj¹\ znaku\ oddzielaj¹cego\ waroœci\ i\ tablice}}
-\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordtype}{void}\ zapisz\_ciag\_2d\_do\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ data,\ \textcolor{keywordtype}{char}\ delimiter\_val,\ \textcolor{keywordtype}{char}\ delimiter\_array)}
-\DoxyCodeLine{00305\ \ \ \ \ \{}
-\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ otwarcie\ pliku\ do\ zapisu}}
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ std::fstream\ ofs(nazwa\_pliku,\ std::ios::out);}
-\DoxyCodeLine{00308\ }
-\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ weryfikacja\ otwarcia\ pliku}}
-\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ofs.good())}
-\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ b³¹d\ przy\ próbie\ otwarcia\ pliku}}
-\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::string(\textcolor{stringliteral}{"{}Nie\ udalo\ sie\ otworzyc\ pliku\ "{}})\ +\ nazwa\_pliku\ +\ \textcolor{stringliteral}{"{}\ do\ zapisu!"{}};}
-\DoxyCodeLine{00313\ }
-\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ ka¿dego\ podci¹gu}}
-\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ arr\ :\ data)}
-\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//dla\ ka¿dego\ elementu\ tablicy}}
-\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ arr)}
-\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wpisane\ wartoœci\ do\ pliku\ razem\ ze\ znakiem\ koñca wartoœci}}
-\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ofs\ <<\ el\ <<\ delimiter\_val;}
-\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00323\ }
-\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wpisane\ znaku\ koñca tabeli}}
-\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ ofs\ <<\ delimiter\_array;}
-\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00327\ }
-\DoxyCodeLine{00328\ \ \ \ \ \}}
-\DoxyCodeLine{00329\ \}}
-\DoxyCodeLine{00330\ }
-\DoxyCodeLine{00331\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}]\(\backslash\)n"{}};}
+\DoxyCodeLine{00292\ \ \ \ \ \}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordtype}{void}\ wypisz\_ciag(\textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ data,\ \textcolor{keywordtype}{unsigned}\ spacing)}
+\DoxyCodeLine{00296\ \ \ \ \ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ kaÅ¼dego\ elementu\ tablicy\ 2-\/wymiarowej}}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ arr\ :\ data)}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wypisz\ wartoÅ›ci\ ciÄ…gu\ 1-\/wymiarowego\ wykorzystujÄ…c\ istniajÄ…cÄ…\ funkcjÄ™\ wypisz\_ciÄ…g}}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ pro::wypisz\_ciag(arr,\ spacing);}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ \}}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{comment}{//\ zapisuje\ tablice\ do\ pliku\ wyjsciowego\ z\ opcjonalnÄ…\ specyfikacjÄ…\ znaku\ oddzielajÄ…cego\ waroÅ›ci}}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordtype}{void}\ zapisz\_ciag\_do\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keyword}{const}\ std::vector<T>\&\ data,\ \textcolor{keywordtype}{char}\ delimiter)}
+\DoxyCodeLine{00308\ \ \ \ \ \{}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ otwarcie\ pliku\ do\ zapisu}}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ std::fstream\ ofs(nazwa\_pliku,\ std::ios::out);}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ weryfikacja\ otwarcia\ pliku}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ofs.good())}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bÅ‚Ä…d\ przy\ prÃ³bie\ otwarcia\ pliku}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::string(\textcolor{stringliteral}{"{}Nie\ udalo\ sie\ otworzyc\ pliku\ "{}})\ +\ nazwa\_pliku\ +\ \textcolor{stringliteral}{"{}\ do\ zapisu!"{}};}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ kaÅ¼dego\ elementu\ tablicy}}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ data)}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wpisane\ wartoÅ›ci\ do\ pliku\ razem\ ze\ znakiem\ koÅ„ca\ wartoÅ›ci}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ ofs\ <<\ el\ <<\ delimiter;}
+\DoxyCodeLine{00321\ \ \ \ \ \}}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{comment}{//\ zapisuje\ tablice\ dwuwymiarowÄ…\ do\ pliku\ wyjsciowego\ z\ opcjonalnÄ…\ specyfikacjÄ…\ znaku\ oddzielajÄ…cego\ waroÅ›ci\ i\ tablice}}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordtype}{void}\ zapisz\_ciag\_2d\_do\_pliku(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nazwa\_pliku,\ \textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ data,\ \textcolor{keywordtype}{char}\ delimiter\_val,\ \textcolor{keywordtype}{char}\ delimiter\_array)}
+\DoxyCodeLine{00326\ \ \ \ \ \{}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ otwarcie\ pliku\ do\ zapisu}}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ std::fstream\ ofs(nazwa\_pliku,\ std::ios::out);}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ weryfikacja\ otwarcia\ pliku}}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ofs.good())}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ jeÅ¼eli\ wartoÅ›Ä‡\ bÅ‚Ä™du\ jest\ rÃ³wna\ 2,\ to\ Å›cieÅ¼ka\ do\ pliku\ jest\ niepoprawna\ lub\ nie\ istnieje}}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ tworzenie\ folderu\ wskazanego\ przez\ Å›cieÅ¼kÄ™}}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errno\ ==\ 2)}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ fn\ =\ std::string(nazwa\_pliku);}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos\ =\ fn.rfind(\textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ ==\ std::string::npos)}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ fn.rfind(\textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)"{}});}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ std::string(\textcolor{stringliteral}{"{}mkdir\ "{}});}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ ==\ std::string::npos)\ cmd\ +=\ std::string(nazwa\_pliku);}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ cmd\ +=\ std::string(nazwa\_pliku).substr(0,\ pos);}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Executing\ \(\backslash\)"{}"{}}\ <<\ cmd\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ system(cmd.c\_str());}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ofs.open(nazwa\_pliku,\ std::ios::out);}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!ofs.good())}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bÅ‚Ä…d\ przy\ prÃ³bie\ otwarcia\ pliku}}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::string(\textcolor{stringliteral}{"{}Nie\ udalo\ sie\ otworzyc\ pliku\ "{}})\ +\ nazwa\_pliku\ +\ \textcolor{stringliteral}{"{}\ do\ zapisu!\ Kod\ bledu:\ "{}}\ +\ std::to\_string(errno);}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ kaÅ¼dego\ podciÄ…gu}}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ arr\ :\ data)}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//dla\ kaÅ¼dego\ elementu\ tablicy}}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ arr)}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wpisane\ wartoÅ›ci\ do\ pliku\ razem\ ze\ znakiem\ koÅ„ca\ wartoÅ›ci}}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ofs\ <<\ el\ <<\ delimiter\_val;}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wpisane\ znaku\ koÅ„ca\ tabeli}}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ ofs\ <<\ delimiter\_array;}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \ \ \ \ \}}
+\DoxyCodeLine{00372\ \}}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

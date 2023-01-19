@@ -5,7 +5,7 @@
   \item {generuj\_losowy\_ciag}
     \subitem {projekt1.h}, 3
   \item {generuj\_losowy\_ciag\_2d}
-    \subitem {projekt1.h}, 3
+    \subitem {projekt1.h}, 4
 
   \indexspace
 
@@ -21,25 +21,27 @@
   \item {odczytaj\_ciag\_z\_pliku}
     \subitem {projekt1.h}, 5
   \item {opisz\_ciag}
-    \subitem {projekt1.h}, 5, 6
+    \subitem {projekt1.h}, 6
 
   \indexspace
 
   \item {projekt1.h}, 1
     \subitem {generuj\_ciag\_z\_zakresu}, 3
     \subitem {generuj\_losowy\_ciag}, 3
-    \subitem {generuj\_losowy\_ciag\_2d}, 3
+    \subitem {generuj\_losowy\_ciag\_2d}, 4
     \subitem {linear\_search\_iterator}, 4
     \subitem {losowa\_liczba}, 4
     \subitem {odczytaj\_ciag\_2d\_z\_pliku}, 5
     \subitem {odczytaj\_ciag\_z\_pliku}, 5
-    \subitem {opisz\_ciag}, 5, 6
+    \subitem {opisz\_ciag}, 6
     \subitem {quicksort\_iterator}, 6
     \subitem {quicksort\_iterator\_partition}, 6
+    \subitem {quicksort\_iterator\_three\_way\_partition}, 7
+    \subitem {quicksort\_three\_way\_iterator}, 7
     \subitem {set\_intersection}, 7
-    \subitem {thread\_bounds}, 7
-    \subitem {wypisz\_ciag}, 7, 8
-    \subitem {zapisz\_ciag\_2d\_do\_pliku}, 8
+    \subitem {thread\_bounds}, 8
+    \subitem {wypisz\_ciag}, 8, 9
+    \subitem {zapisz\_ciag\_2d\_do\_pliku}, 9
     \subitem {zapisz\_ciag\_do\_pliku}, 9
 
   \indexspace
@@ -48,6 +50,10 @@
     \subitem {projekt1.h}, 6
   \item {quicksort\_iterator\_partition}
     \subitem {projekt1.h}, 6
+  \item {quicksort\_iterator\_three\_way\_partition}
+    \subitem {projekt1.h}, 7
+  \item {quicksort\_three\_way\_iterator}
+    \subitem {projekt1.h}, 7
 
   \indexspace
 
@@ -57,17 +63,17 @@
   \indexspace
 
   \item {thread\_bounds}
-    \subitem {projekt1.h}, 7
+    \subitem {projekt1.h}, 8
 
   \indexspace
 
   \item {wypisz\_ciag}
-    \subitem {projekt1.h}, 7, 8
+    \subitem {projekt1.h}, 8, 9
 
   \indexspace
 
   \item {zapisz\_ciag\_2d\_do\_pliku}
-    \subitem {projekt1.h}, 8
+    \subitem {projekt1.h}, 9
   \item {zapisz\_ciag\_do\_pliku}
     \subitem {projekt1.h}, 9
 

@@ -14,7 +14,7 @@
 #include <math.h>
 
 
-// funkcja wywołująca testy czasów na obu algorytmach i zapisująca wyniki do pliku
+// funkcja wywołująca testy czasów na obu algorytmach
 std::vector<std::vector<double>> testy(int ilosc_testow, int start_w, int start_h, int multiplier, int ilosc_watkow);
 
 // algorytm - realizacja naiwna
@@ -33,7 +33,7 @@ int main()
 
     // 11 release
     // 8 debug
-    auto wyniki = testy(8, 800, 80, 2, 4);
+    auto wyniki = testy(8, 800, 80, 2, 1);
 
     try
     {
@@ -49,8 +49,8 @@ int main()
     return 0;
 }
 
-// funkcja wywołująca testy czasów na obu algorytmach
 std::vector<std::vector<double>> testy(int ilosc_testow, int start_w, int start_h, int multiplier, int ilosc_watkow)
+// funkcja wywołująca testy czasów na obu algorytmach
 {
     std::chrono::high_resolution_clock::time_point start, stop;
     std::chrono::duration<double> timediff;
@@ -68,9 +68,6 @@ std::vector<std::vector<double>> testy(int ilosc_testow, int start_w, int start_
         height = std::round((double)start_h * std::pow(std::sqrt(multiplier), nr_testu));
 
         std::vector<double> zebrane_dane;
-
-        //int width = (double)(nr_testu + 1.0) / (double)ilosc_testow * max_w;
-        //int height = (double)(nr_testu + 1.0) / (double)ilosc_testow * max_h;
 
         zebrane_dane.push_back(width*height);
 
@@ -153,7 +150,7 @@ std::vector<int> znajdz_powtorzenia_a(const std::vector<std::vector<int>>::const
         for (auto el = arr_i->begin(); el != arr_i->end(); el++)
         {
             // jeżeli szukany element znajduje się w tablicy powtórzeń
-            if ((it = pro::linear_search_iterator(powtorzenia, *el)) != powtorzenia.end())
+            if (*el != empty_marker && (it = pro::linear_search_iterator(powtorzenia, *el)) != powtorzenia.end())
             {
                 // wpisanie znalezionego elementu do tablicy bufor
                 bufor.push_back(*it);

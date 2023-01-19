@@ -163,52 +163,71 @@ void pro::quicksort_iterator(std::vector<int>::iterator begin, std::vector<int>:
 
 std::pair<std::vector<int>::iterator, std::vector<int>::iterator> pro::quicksort_iterator_three_way_partition(std::vector<int>::iterator start, std::vector<int>::iterator end)
 {
-	auto mid = start;
+	// iterator wskazujący pierwszy element w zakresie
+	std::vector<int>::iterator mid = start;
+	// wartość, względem której wykonujemy porównania wybrana jako ostani element z zakresu
 	int pivot = *(end - 1);
 
+	// dopóki iterator mid i end są inne (operujemy na iteratorze przekazanym jako argument)
 	while (mid != end)
 	{
+		// jeżeli wartość ekementu wskazywanego przez iterator mid jest mniejsza niż wartość pivot
 		if (*mid < pivot)
 		{
+			// zamień miejscami element wskazywany przez mid z pierwszym elementem w ciągu
 			std::swap(*start, *mid);
+			// przesuń początek ciągu i iterator mid do przodu o 1 element
 			++start;
 			++mid;
 		}
+		// jeżeli wartość ekementu wskazywanego przez iterator mid jest większa niż wartość pivot
 		else if (*mid > pivot)
 		{
+			// zamień miejscami element wskazywany przez mid z ostatnim elementem w ciągu
 			std::swap(*mid, *(end - 1));
+			// zmniejsz długość ciągu o 1
 			--end;
 		}
+		// w przeciwnym wypadku
 		else
 		{
+			// przesuń iterator do przodu
 			++mid;
 		}
 	}
 
 	// ciąg [start ... mid] zawiera wszystkie wystąpienia wartości równych zmiennej pivot
+	// zwróć iteratory start i mid
 	return { start, mid };
 }
 
 void pro::quicksort_three_way_iterator(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
+	// jeżeli ciąg jest długości niewiększej od 1 to jest już posortowany
 	if (std::distance(begin, end) <= 1)
 	{
 		return;
 	}
 
+	// jeżeli ciąg ma 2 elementy
 	if (std::distance(begin, end) == 2)
 	{
+		// jeżeli pierwszy element jest większy od drugiego
 		if (*begin > *(begin + 1))
 		{
+			// zamień je miejscami
 			std::swap(*begin, *(begin + 1));
 		}
 		return;
 	}
 
+	// oblicz zakresy następnych obszarów do posortowania
 	auto pivot = pro::quicksort_iterator_three_way_partition(begin, end);
 
+	// posortuj lewą część tablicy
 	pro::quicksort_three_way_iterator(begin, pivot.first);
 
+	// posortuj prawą część tablicy
 	pro::quicksort_three_way_iterator(pivot.second, end);
 }
 

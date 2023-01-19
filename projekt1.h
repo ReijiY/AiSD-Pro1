@@ -49,7 +49,7 @@ namespace pro
 
 	// 
 	/**
-	 * @brief Generuje losowy ciag o podanej długości z wartościami z podanego przedziału.
+	 * @brief Generuje losowy ciąg o podanej długości z wartościami z podanego przedziału.
 	 * 
 	 * @param min Minimalna wartość elementu w ciągu
 	 * @param max Maksymalna wartosć elementu w ciągu
@@ -60,7 +60,7 @@ namespace pro
 	std::vector<int> generuj_losowy_ciag(int min, int max, int width);
 
 	/**
-	 * @brief Generuje losowy dwuwymiarowy ciag o podanych wymiarach z wartościami z podanego przedziału.
+	 * @brief Generuje losowy dwuwymiarowy ciąg o podanych wymiarach z wartościami z podanego przedziału.
 	 * 
 	 * @param min Minimalna wartość elementu w ciągu
 	 * @param max Maksymalna wartosć elementu w ciągu
@@ -72,7 +72,7 @@ namespace pro
 	std::vector<std::vector<int>> generuj_losowy_ciag_2d(int min, int max, int width, int height);
 
 	/**
-	 * @brief Zwraca ciag z zakresu start do end z krokiem step.
+	 * @brief Zwraca ciąg z zakresu start do end z krokiem step.
 	 * 
 	 * @code
 	 * np. f(2, 6, 2) -> [2, 4, 6]
@@ -179,9 +179,9 @@ namespace pro
 	 * 
 	 * @param nazwa_pliku ścieżka do pliku
 	 * @param delimiter_val Znak oddzielający wartości wiersza w pliku
-	 * @param delimiter_array Znak oddzielający kolumny w pliku
+	 * @param delimiter_array Znak oddzielający wiersze w pliku
 	 * 
-	 * @return Dwuwymiarowa tablica odczytany z pliku
+	 * @return Dwuwymiarowa tablica odczytana z pliku
 	*/
 	std::vector<std::vector<int>> odczytaj_ciag_2d_z_pliku(const char* nazwa_pliku, char delimiter_val = PRO_FILE_VALUE_DELIMITER, char delimiter_array = PRO_FILE_ARRAY_DELIMITER);
 
@@ -232,13 +232,13 @@ namespace pro
 	void zapisz_ciag_do_pliku(const char* nazwa_pliku, const std::vector<T>& data, char delimiter = PRO_FILE_VALUE_DELIMITER);
 
 	/**
-	 * @brief Zapisuje tablilcę dwuwymiarową do pliku wyjściowego.
+	 * @brief Zapisuje tablicę dwuwymiarową do pliku wyjściowego.
 	 * 
 	 * @tparam T Rodzaj danych przechowywanych w tablicy
 	 * @param nazwa_pliku ścieżka do pliku
 	 * @param data Tablica do zapisania
 	 * @param delimiter_val Znak oddzielający wartości wiersza w pliku
-	 * @param delimiter_array Znak oddzielający kolumny w pliku
+	 * @param delimiter_array Znak oddzielający wiersze w pliku
 	*/
 	template<class T>
 	void zapisz_ciag_2d_do_pliku(const char* nazwa_pliku, const std::vector<std::vector<T>>& data, char delimiter_val = PRO_FILE_VALUE_DELIMITER, char delimiter_array = PRO_FILE_ARRAY_DELIMITER);
